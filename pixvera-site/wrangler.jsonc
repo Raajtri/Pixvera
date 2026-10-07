@@ -1,0 +1,11 @@
+{
+  // Cloudflare static-assets deploy for the Astro build output. No server adapter needed.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "pixvera",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    // Serve dist/404.html for unknown URLs (our custom 404 page).
+    "not_found_handling": "404-page"
+  }
+}
