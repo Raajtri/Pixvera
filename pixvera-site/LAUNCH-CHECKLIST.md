@@ -43,7 +43,7 @@ Not indexed (noindex, not in sitemap): `/privacy/`, `/terms/`, `/thank-you/`, `/
 - [ ] Prices currently show "Price after quote" (`src/data/site.ts`). Add real "Starting from ₹..." amounts whenever you are ready. Keep or remove the "Recommended" badges
 - [ ] Domain: `site` in `astro.config.mjs` and `url` in `src/data/site.ts` (currently `https://acegrow.in`)
 - [ ] Contact form: create the Web3Forms key with **acegrow.in@gmail.com** at web3forms.com, then set `PUBLIC_WEB3FORMS_KEY` (enquiries arrive in that inbox). Also `.env`: `PUBLIC_WEB3FORMS_KEY`, `PUBLIC_GA4_ID`, `PUBLIC_GSC_VERIFICATION`
-- [ ] Case study (`src/pages/case-study.astro`): all numbers filled. College name, graphs and screenshots are intentionally not shown (client does not allow). Still to add: 1-2 specific off-page actions (orange tag)
+- [ ] Case study (`src/pages/case-study.astro`): all numbers filled. College name, graphs and screenshots are intentionally not shown (client does not allow). Off-page actions filled (bad links removed, social profiles)
 - [ ] About page (`src/pages/about.astro`): your story paragraphs and 2 founder photos
 - [ ] Privacy and Terms: `[DATE]`, retention period, payment terms, ownership terms, governing law. Have a lawyer review both
 - [ ] Blog: replace each `[ADD SOURCE: ...]` with a real source link or delete the sentence
