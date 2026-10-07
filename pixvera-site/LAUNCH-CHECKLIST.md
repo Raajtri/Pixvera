@@ -38,16 +38,15 @@ Not indexed (noindex, not in sitemap): `/privacy/`, `/terms/`, `/thank-you/`, `/
 ## 2. Placeholders still to fill
 
 **Must fix before launch (site shows them publicly):**
-- [ ] `src/data/site.ts`: `whatsappNumber` (digits, e.g. 919876543210), `phoneDisplay`, `email`, founder names `[FOUNDER 1]` / `[FOUNDER 2]` and their bios, social profile URLs
-- [ ] `src/data/site.ts`: all prices `₹[X]`, page counts `[X]`, and the "Recommended" plan badges (keep or remove)
-- [ ] Domain: `site` in `astro.config.mjs` and `url` in `src/data/site.ts` (currently `https://pixvera.in`)
-- [ ] `.env`: `PUBLIC_WEB3FORMS_KEY`, `PUBLIC_GA4_ID`, `PUBLIC_GSC_VERIFICATION`
-- [ ] Case study (`src/pages/case-study.astro`): `[STARTING RANK]`, `[ENDING RANK]`, `[TRAFFIC CHANGE]`, `[LEADS CHANGE]`, `[TIMEFRAME]`, `[MAIN SEARCH 1/2]`, `[FOUNDER NAME]`, the situation sentence, 5 x specific actions, college name (only with permission), 3 real screenshots (use `ShotSlot` with a real image in `src/assets/`)
+- [x] Done: WhatsApp 8303026772, email acegrow.in@gmail.com, founders Aman Tripathi and Sushant Tiwari
+- [ ] `src/data/site.ts`: founder bios (2-3 sentences each) and social profile URLs
+- [ ] Prices currently show "Price after quote" (`src/data/site.ts`). Add real "Starting from ₹..." amounts whenever you are ready. Keep or remove the "Recommended" badges
+- [ ] Domain: `site` in `astro.config.mjs` and `url` in `src/data/site.ts` (currently `https://acegrow.in`)
+- [ ] Contact form: create the Web3Forms key with **acegrow.in@gmail.com** at web3forms.com, then set `PUBLIC_WEB3FORMS_KEY` (enquiries arrive in that inbox). Also `.env`: `PUBLIC_WEB3FORMS_KEY`, `PUBLIC_GA4_ID`, `PUBLIC_GSC_VERIFICATION`
+- [ ] Case study (`src/pages/case-study.astro`): all numbers filled. College name, graphs and screenshots are intentionally not shown (client does not allow). Still to add: 1-2 specific off-page actions (orange tag)
 - [ ] About page (`src/pages/about.astro`): your story paragraphs and 2 founder photos
-- [ ] Contact page: reply time `[X]` hours
-- [ ] Pricing FAQ (`src/data/faqs.ts`): contract terms
 - [ ] Privacy and Terms: `[DATE]`, retention period, payment terms, ownership terms, governing law. Have a lawyer review both
-- [ ] Blog: replace each `[ADD SOURCE: ...]` with a real source link or delete the sentence; `[ADD YOUR CURRENT PRICE RANGES HERE]` in the website-cost post
+- [ ] Blog: replace each `[ADD SOURCE: ...]` with a real source link or delete the sentence
 - [ ] Replace `public/og-default.png` (1200x630) with your own share image
 
 **Optional / later:**

@@ -1,5 +1,5 @@
 ---
-/** Pixvera wordmark with a 4-square pixel-grid icon (one square orange). Used in header, footer and favicon. */
+/** AceGrow wordmark with a 4-square pixel-grid icon (one square orange). Used in header, footer and favicon. */
 interface Props {
   dark?: boolean;
   descriptor?: boolean;
@@ -15,7 +15,7 @@ const { dark = false, descriptor = true } = Astro.props;
     <rect x="18" y="18" width="12" height="12" rx="3" fill="#FF7A1A"></rect>
   </svg>
   <span class="flex flex-col leading-none">
-    <span class:list={['font-heading text-[1.4rem] font-extrabold tracking-tight', dark ? 'text-white' : 'text-ink']}>Pixvera</span>
+    <span class:list={['font-heading text-[1.4rem] font-extrabold tracking-tight', dark ? 'text-white' : 'text-ink']}>AceGrow</span>
     {
       descriptor && (
         <span class:list={['mt-1 text-[0.68rem] font-semibold uppercase tracking-[0.14em]', dark ? 'text-indigo-200' : 'text-ink-soft']}>

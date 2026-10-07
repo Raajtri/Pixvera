@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 // Change this to your real domain before deploying.
-const SITE = 'https://pixvera.in';
+const SITE = 'https://acegrow.in';
 
 export default defineConfig({
   site: SITE,

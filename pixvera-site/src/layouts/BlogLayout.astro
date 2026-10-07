@@ -57,7 +57,7 @@ const fmt = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'long', ye
 >
   <PageHero h1={seo.h1} crumbs={crumbs}>
     <p class="mt-4 text-sm text-ink-soft">
-      By the Pixvera team · <time datetime={post.data.date.toISOString()}>{fmt.format(post.data.date)}</time>
+      By the AceGrow team · <time datetime={post.data.date.toISOString()}>{fmt.format(post.data.date)}</time>
       {post.data.readingMinutes && <> · {post.data.readingMinutes} min read</>}
     </p>
     <DirectAnswer text={post.data.directAnswer} />

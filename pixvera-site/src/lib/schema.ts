@@ -6,11 +6,11 @@ const orgId = `${site.url}/#organization`;
 const bizId = `${site.url}/#business`;
 
 const sameAs = site.social.map((s) => s.url).filter((u) => !isPlaceholder(u));
-const phone = isPlaceholder(site.phoneDisplay) ? undefined : site.phoneDisplay;
+const phone = isPlaceholder(site.phoneDisplay) ? undefined : `+${site.whatsappNumber}`;
 const email = isPlaceholder(site.email) ? undefined : site.email;
 const founders = site.founders
   .filter((f) => !isPlaceholder(f.name))
-  .map((f) => ({ '@type': 'Person', name: `${f.name} ${site.founderSurname}` }));
+  .map((f) => ({ '@type': 'Person', name: f.name }));
 
 const areaServed = site.serviceAreas.map((name) => ({ '@type': 'City', name }));
 

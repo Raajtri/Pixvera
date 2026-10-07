@@ -1,4 +1,4 @@
-# Pixvera website
+# AceGrow website
 
 Astro (static) + Tailwind CSS v4 + self-hosted fonts. No UI framework. Almost no JavaScript (mobile menu toggle and a small scroll-reveal). Deploys to Cloudflare Pages.
 
@@ -65,7 +65,7 @@ Area pages are intentionally off. Add an entry to `src/data/areas.ts` with `stat
 **Option B: direct upload**
 ```bash
 npm run build
-npx wrangler pages deploy dist --project-name pixvera
+npx wrangler pages deploy dist --project-name acegrow
 ```
 
 `public/_headers` sets security headers and long caching for `/_astro/*`. Cloudflare compresses text assets automatically.

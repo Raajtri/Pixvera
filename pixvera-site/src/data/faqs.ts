@@ -2,8 +2,8 @@
 
 export const homeFaqs = [
   {
-    q: 'What does Pixvera do?',
-    a: 'Pixvera is a digital growth studio in Mumbai. We build websites, help your business appear on Google Search and Google Maps, run Google and Instagram/Facebook ads, set up WhatsApp enquiries and build custom mobile apps.',
+    q: 'What does AceGrow do?',
+    a: 'AceGrow is a digital growth studio in Mumbai. We build websites, help your business appear on Google Search and Google Maps, run Google and Instagram/Facebook ads, set up WhatsApp enquiries and build custom mobile apps.',
   },
   {
     q: 'Do you work with my type of business?',
@@ -11,7 +11,7 @@ export const homeFaqs = [
   },
   {
     q: 'Can you guarantee a number 1 ranking on Google?',
-    a: 'No, and nobody honestly can. Google decides rankings and they change. We do careful work on the things that are known to matter and show you clear reports. Our founder has taken a Mumbai college website from #3 to #1, but results depend on each business.',
+    a: 'No, and nobody honestly can. Google decides rankings and they change. We do careful work on the things that are known to matter and show you clear reports. Our co-founder Aman Tripathi took a Mumbai college website from #3 to #1, but results depend on each business.',
   },
   {
     q: 'How much does it cost?',
@@ -25,8 +25,8 @@ export const homeFaqs = [
 
 export const pricingFaqs = [
   {
-    q: 'Why do you show "starting from" prices?',
-    a: 'Every business is different. A starting price shows the lowest plan we offer, and your final quote depends on pages, features, competition and how much work your current setup needs. We always confirm the full price in writing before we begin.',
+    q: 'Why is there no fixed price on the website?',
+    a: 'Every business is different. The price depends on pages, features, competition and how much work your current setup needs. We listen first, then send a clear written quote, so you only pay for what you need.',
   },
   {
     q: 'Are ad spend, domain and hosting included?',
@@ -34,11 +34,11 @@ export const pricingFaqs = [
   },
   {
     q: 'Do I have to sign a long contract for SEO or ads?',
-    a: '[CONFIRM YOUR TERMS: for example, month-to-month with 30 days notice, or a minimum of 3 months.] Whatever the terms are, we write them down clearly before you pay anything.',
+    a: 'The length of the plan and the notice period are written in your quote before you pay anything, so there are no surprises.',
   },
   {
     q: 'How much does SEO cost in Mumbai?',
-    a: 'SEO is usually a monthly service, and the price depends on how competitive your searches are, how many locations or services you have and how much work your website needs. Our SEO plans start from the amounts shown on this page, and we give an exact quote after a free listing check.',
+    a: 'SEO is usually a monthly service, and the price depends on how competitive your searches are, how many locations or services you have and how much work your website needs. We give an exact quote after a free Google listing check.',
   },
   {
     q: 'Can I start small and upgrade later?',

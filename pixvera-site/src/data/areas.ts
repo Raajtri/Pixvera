@@ -1,7 +1,7 @@
 /**
  * LOCAL AREA PAGES (/areas/ and /areas/<slug>/)
  *
- * Pixvera ships with NO live areas on purpose: thin or fake location pages hurt rankings and trust.
+ * AceGrow ships with NO live areas on purpose: thin or fake location pages hurt rankings and trust.
  * Nothing in this file appears on the site (pages, navigation, footer, sitemap, schema) until an entry
  * has `status: "live"`. Entries marked "draft" are ignored completely.
  *

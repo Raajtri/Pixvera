@@ -7,23 +7,22 @@ export const isPlaceholder = (value: string | undefined | null): boolean =>
   !value || /\[|\]|X{4,}|YOUR_/.test(value);
 
 export const site = {
-  name: 'Pixvera',
+  name: 'AceGrow',
   descriptor: 'Digital Growth Studio',
   tagline: 'We build your website, get you found on Google, and turn searches into customers.',
-  url: 'https://pixvera.in', // keep in sync with `site` in astro.config.mjs
+  url: 'https://acegrow.in', // keep in sync with `site` in astro.config.mjs
   locale: 'en-IN',
   location: 'Mumbai, India',
   // Service-area business: no public office address is shown anywhere on the site or in schema.
   serviceAreas: ['Mumbai', 'Thane', 'Navi Mumbai'],
-  founderSurname: 'Tripathi',
   founders: [
-    { name: '[FOUNDER 1]', role: 'Co-founder', bio: '[ADD 2-3 SENTENCES ABOUT FOUNDER 1: background, what they handle at Pixvera]' },
-    { name: '[FOUNDER 2]', role: 'Co-founder', bio: '[ADD 2-3 SENTENCES ABOUT FOUNDER 2: background, what they handle at Pixvera]' },
+    { name: 'Aman Tripathi', role: 'Co-founder', bio: '[ADD 2-3 SENTENCES ABOUT AMAN: background, what they handle at AceGrow]' },
+    { name: 'Sushant Tiwari', role: 'Co-founder', bio: '[ADD 2-3 SENTENCES ABOUT SUSHANT: background, what they handle at AceGrow]' },
   ],
-  // Digits only, with country code, for wa.me links. Example: 919876543210
-  whatsappNumber: '91XXXXXXXXXX',
-  phoneDisplay: '[PHONE NUMBER]',
-  email: '[EMAIL]',
+  // Digits only, with country code, for wa.me links.
+  whatsappNumber: '918303026772',
+  phoneDisplay: '+91 83030 26772',
+  email: 'acegrow.in@gmail.com',
   // Add real profile URLs. Entries still containing [ ] are skipped in schema and the footer.
   social: [
     { label: 'Instagram', url: 'https://www.instagram.com/[YOUR-HANDLE]/' },
@@ -32,7 +31,7 @@ export const site = {
   ],
   // Social share image (1200x630). Replace public/og-default.png with your own design.
   ogImage: '/og-default.png',
-  whatsappDefaultMessage: 'Hi Pixvera, I would like a free Google listing check for my business.',
+  whatsappDefaultMessage: 'Hi AceGrow, I would like a free Google listing check for my business.',
 } as const;
 
 export const whatsappLink = (message: string = site.whatsappDefaultMessage): string =>
@@ -86,20 +85,20 @@ export const services = [
 ] as const;
 
 /**
- * PRICES: all placeholders. Replace "[X]" with your real starting price, e.g. "₹15,000".
- * The site always shows them as "Starting from ₹X".
+ * PRICES: shown as "Price after quote" until you set real amounts.
+ * To show a number later, replace the `from` text with e.g. "Starting from ₹15,000".
  */
 export const pricing = {
   note: 'Ad spend (the money paid to Google or Meta), domain name and hosting are paid by the client directly. They are not included in our fees.',
   websites: [
     {
       name: 'Starter Website',
-      from: '₹[X]',
+      from: 'Price after quote',
       period: 'one-time',
       blurb: 'For businesses that need a clean, simple online presence.',
       highlight: false,
       features: [
-        'Up to [X] pages',
+        'Pages as per your needs',
         'Mobile-friendly design',
         'Contact form + WhatsApp button',
         'Basic on-page SEO set-up',
@@ -108,13 +107,13 @@ export const pricing = {
     },
     {
       name: 'Growth Website',
-      from: '₹[X]',
+      from: 'Price after quote',
       period: 'one-time',
       blurb: 'For businesses that want to be found on Google and win enquiries.',
       highlight: true,
       badge: 'Recommended',
       features: [
-        'Up to [X] pages',
+        'Pages as per your needs',
         'Everything in Starter',
         'Full on-page SEO and service pages',
         'Speed and Core Web Vitals tuning',
@@ -124,24 +123,24 @@ export const pricing = {
     },
     {
       name: 'Business Website',
-      from: '₹[X]',
+      from: 'Price after quote',
       period: 'one-time',
       blurb: 'For larger businesses with many services, locations or products.',
       highlight: false,
       features: [
-        'Up to [X] pages',
+        'Pages as per your needs',
         'Everything in Growth',
         'Blog or news section',
         'Custom sections and integrations',
-        '[X] rounds of revisions',
-        'Priority support for [X] days',
+        'Revision rounds agreed in your quote',
+        'Priority support after launch',
       ],
     },
   ],
   monthly: [
     {
       name: 'Local SEO Starter',
-      from: '₹[X]',
+      from: 'Price after quote',
       period: 'per month',
       blurb: 'Get your Google Business Profile and local presence in order.',
       highlight: false,
@@ -155,7 +154,7 @@ export const pricing = {
     },
     {
       name: 'SEO + Ads Growth',
-      from: '₹[X]',
+      from: 'Price after quote',
       period: 'per month',
       blurb: 'Search and ads working together to bring steady enquiries.',
       highlight: true,
@@ -170,14 +169,14 @@ export const pricing = {
     },
     {
       name: 'Full Growth',
-      from: '₹[X]',
+      from: 'Price after quote',
       period: 'per month',
       blurb: 'SEO plus ads on more than one platform, with more content.',
       highlight: false,
       features: [
         'Everything in SEO + Ads Growth',
         'Google Ads and Meta Ads (both)',
-        '[X] new pages or blog posts a month',
+        'New pages or blog posts every month',
         'Backlink and citation building',
         'Fortnightly check-in call',
       ],

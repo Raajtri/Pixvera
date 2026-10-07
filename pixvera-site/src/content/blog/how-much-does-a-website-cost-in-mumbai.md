@@ -10,7 +10,7 @@ related:
   - "how-to-rank-on-google-maps-in-mumbai"
 faqs:
   - q: "What is a fair price for a small business website in Mumbai?"
-    a: "There is no single fair price, because it depends on pages, design and features. A fair quote is one that clearly lists what you get, who owns it and what you pay later. Compare quotes line by line, not just the final number. [ADD YOUR CURRENT PRICE RANGES HERE]"
+    a: "There is no single fair price, because it depends on pages, design and features. A fair quote is one that clearly lists what you get, who owns it and what you pay later. Compare quotes line by line, not just the final number. If you would like a quote for your own business, send us your requirements and we will explain it line by line."
   - q: "Is a cheaper website always worse?"
     a: "Not always, but very low prices often mean a copied template, no SEO set-up, slow loading or no support after launch. Ask to see examples on a real phone and ask what happens if something breaks."
   - q: "Do I have to pay every year after the website is built?"
@@ -73,7 +73,7 @@ Many people compare only the build price. Check these as well:
 - **Content updates.** Find out whether small text changes are free or charged.
 - **Taxes.** GST may apply to the services you buy. Ask whether the quote includes it.
 
-At Pixvera, domain name and hosting are paid by the client directly, so you stay in control of them. We think this is a fairer way to work, because your accounts remain yours.
+At AceGrow, domain name and hosting are paid by the client directly, so you stay in control of them. We think this is a fairer way to work, because your accounts remain yours.
 
 ## How to compare quotes properly
 
@@ -115,7 +115,7 @@ You will get better, more comparable quotes if you can answer these questions:
 - Which websites do you like, and why?
 - When would you like to launch?
 
-## Where Pixvera fits
+## Where AceGrow fits
 
 We build fast, mobile-friendly websites with SEO built in, for businesses in Mumbai, Thane and Navi Mumbai. We keep our plans simple and confirm everything in writing before we start. You can see what is included on our [website development page](/services/website-development-mumbai/) and what affects our pricing on the [pricing page](/pricing/).
 

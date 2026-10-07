@@ -26,7 +26,7 @@ ${grid(1200, 630, 40, 'rgba(255,255,255,0.06)')}
 <circle cx="1050" cy="80" r="260" fill="#4F46E5" opacity="0.35"/>
 <circle cx="120" cy="600" r="220" fill="#FF7A1A" opacity="0.18"/>
 ${icon(80, 90, 110)}
-<text x="210" y="165" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="84" fill="#fff">Pixvera</text>
+<text x="210" y="165" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="84" fill="#fff">AceGrow</text>
 <text x="212" y="205" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="24" letter-spacing="5" fill="#A5B4FC">DIGITAL GROWTH STUDIO</text>
 <text x="80" y="360" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="68" fill="#fff">Get Found on Google.</text>
 <text x="80" y="440" font-family="Arial, Helvetica, sans-serif" font-weight="800" font-size="68" fill="#FF7A1A">Get More Enquiries.</text>

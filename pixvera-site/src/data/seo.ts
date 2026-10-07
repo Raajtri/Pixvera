@@ -19,7 +19,7 @@ export interface PageSeo {
   noindex?: boolean;
 }
 
-const BRAND = ' | Pixvera';
+const BRAND = ' | AceGrow';
 
 /** Adds the brand suffix only when the title still fits in 60 characters. */
 const withBrand = (title: string): string => (title.length + BRAND.length <= 60 ? title + BRAND : title);
@@ -30,9 +30,9 @@ const pages: PageSeo[] = [
     path: '/',
     primaryKeyword: 'digital marketing agency Mumbai',
     secondaryKeywords: ['get found on Google Mumbai', 'local SEO and website company Mumbai', 'Google Maps ranking Mumbai'],
-    title: 'Digital Marketing Agency in Mumbai | Pixvera',
+    title: 'Digital Marketing Agency in Mumbai | AceGrow',
     description:
-      'Pixvera is a Mumbai digital growth studio. We build your website, help you rank on Google and Maps, and turn searches into enquiries. Free listing check.',
+      'AceGrow is a Mumbai digital growth studio. We build your website, help you rank on Google and Maps, and turn searches into enquiries. Free listing check.',
     h1: 'Get Found on Google in Mumbai. Get More Enquiries.',
   },
   {
@@ -40,7 +40,7 @@ const pages: PageSeo[] = [
     path: '/services/',
     primaryKeyword: 'digital marketing services Mumbai',
     secondaryKeywords: ['SEO and ads agency Mumbai', 'website and app development Mumbai', 'WhatsApp lead set-up'],
-    title: 'Digital Marketing Services in Mumbai | Pixvera',
+    title: 'Digital Marketing Services in Mumbai | AceGrow',
     description:
       'Local SEO, website development, Google Ads, Instagram and Facebook ads, and Flutter apps for businesses in Mumbai, Thane and Navi Mumbai.',
     h1: 'Digital Marketing Services in Mumbai',
@@ -60,7 +60,7 @@ const pages: PageSeo[] = [
     path: '/services/website-development-mumbai/',
     primaryKeyword: 'website development company Mumbai',
     secondaryKeywords: ['small business websites Mumbai', 'website design Mumbai', 'mobile-friendly website for business'],
-    title: 'Website Development Company in Mumbai | Pixvera',
+    title: 'Website Development Company in Mumbai | AceGrow',
     description:
       'A website development company in Mumbai for small businesses: fast, mobile-friendly sites with SEO built in, a contact form and a WhatsApp button.',
     h1: 'Website Development Company in Mumbai',
@@ -70,7 +70,7 @@ const pages: PageSeo[] = [
     path: '/services/google-ads-management-mumbai/',
     primaryKeyword: 'Google Ads agency Mumbai',
     secondaryKeywords: ['Google Ads management Mumbai', 'PPC services Mumbai', 'search ads for local business'],
-    title: 'Google Ads Agency in Mumbai | Pixvera',
+    title: 'Google Ads Agency in Mumbai | AceGrow',
     description:
       'A Google Ads agency in Mumbai that sets up, tracks and improves your search ads. Clear reporting on calls and enquiries. Ad spend is paid to Google by you.',
     h1: 'Google Ads Agency in Mumbai',
@@ -90,7 +90,7 @@ const pages: PageSeo[] = [
     path: '/services/mobile-app-development-mumbai/',
     primaryKeyword: 'Flutter app development company Mumbai',
     secondaryKeywords: ['mobile app development Mumbai', 'Android and iPhone app developer Mumbai', 'custom app quote'],
-    title: 'Flutter App Development Company in Mumbai | Pixvera',
+    title: 'Flutter App Development Company in Mumbai | AceGrow',
     description:
       'A Flutter app development company in Mumbai: custom Android and iPhone apps from one codebase. Every app is quoted after a free call about your idea.',
     h1: 'Flutter App Development Company in Mumbai',
@@ -122,35 +122,35 @@ const pages: PageSeo[] = [
     secondaryKeywords: ['rank higher on Google Mumbai', 'college SEO case study', 'Google ranking case study India'],
     title: 'SEO Case Study: Mumbai College from #3 to #1 on Google',
     description:
-      'Our founder took a Mumbai college website from #3 to #1 on Google. See the situation, the work done and the results, written as a previous-role example.',
+      'Aman Tripathi took a Mumbai college website from #3 to #1 on Google and cut its load time. See the problems, the fixes and the results.',
     h1: 'SEO Case Study: A Mumbai College from #3 to #1 on Google',
   },
   {
     slug: 'about',
     path: '/about/',
     primaryKeyword: 'digital marketing studio Mumbai',
-    secondaryKeywords: ['Pixvera founders', 'Mumbai SEO and website studio', 'about Pixvera'],
-    title: 'About Pixvera | A Digital Marketing Studio in Mumbai',
+    secondaryKeywords: ['AceGrow founders', 'Mumbai SEO and website studio', 'about AceGrow'],
+    title: 'About AceGrow | A Digital Marketing Studio in Mumbai',
     description:
-      'Pixvera is a new digital growth studio in Mumbai, started by two founders. Learn how we work, what we believe and how to talk to us.',
-    h1: 'About Pixvera, a Digital Marketing Studio in Mumbai',
+      'AceGrow is a new digital growth studio in Mumbai, started by two founders. Learn how we work, what we believe and how to talk to us.',
+    h1: 'About AceGrow, a Digital Marketing Studio in Mumbai',
   },
   {
     slug: 'contact',
     path: '/contact/',
     primaryKeyword: 'contact digital marketing agency Mumbai',
-    secondaryKeywords: ['free Google listing check', 'SEO consultation Mumbai', 'WhatsApp Pixvera'],
-    title: 'Contact Pixvera | Free Google Listing Check, Mumbai',
+    secondaryKeywords: ['free Google listing check', 'SEO consultation Mumbai', 'WhatsApp AceGrow'],
+    title: 'Contact AceGrow | Free Google Listing Check, Mumbai',
     description:
-      'Contact Pixvera on WhatsApp, email or the form. Ask for a free Google listing check and we will tell you plainly what to fix first.',
-    h1: 'Contact Pixvera for a Free Google Listing Check',
+      'Contact AceGrow on WhatsApp, email or the form. Ask for a free Google listing check and we will tell you plainly what to fix first.',
+    h1: 'Contact AceGrow for a Free Google Listing Check',
   },
   {
     slug: 'blog',
     path: '/blog/',
     primaryKeyword: 'digital marketing blog Mumbai',
     secondaryKeywords: ['local SEO tips India', 'small business marketing guides', 'Google Business Profile guide'],
-    title: 'Digital Marketing Blog for Mumbai Businesses | Pixvera',
+    title: 'Digital Marketing Blog for Mumbai Businesses | AceGrow',
     description:
       'Plain-language guides on local SEO, Google Maps, websites, Google Ads and Meta ads for small businesses in Mumbai and across India.',
     h1: 'Digital Marketing Guides for Mumbai Businesses',
@@ -222,8 +222,8 @@ const pages: PageSeo[] = [
     path: '/privacy/',
     primaryKeyword: 'privacy policy',
     secondaryKeywords: [],
-    title: 'Privacy Policy | Pixvera',
-    description: 'How Pixvera collects, uses and protects the information you share when you contact us or use this website.',
+    title: 'Privacy Policy | AceGrow',
+    description: 'How AceGrow collects, uses and protects the information you share when you contact us or use this website.',
     h1: 'Privacy Policy',
     noindex: true,
   },
@@ -232,8 +232,8 @@ const pages: PageSeo[] = [
     path: '/terms/',
     primaryKeyword: 'terms of service',
     secondaryKeywords: [],
-    title: 'Terms of Service | Pixvera',
-    description: 'The simple terms that apply when you use the Pixvera website and enquire about our services.',
+    title: 'Terms of Service | AceGrow',
+    description: 'The simple terms that apply when you use the AceGrow website and enquire about our services.',
     h1: 'Terms of Service',
     noindex: true,
   },
@@ -242,8 +242,8 @@ const pages: PageSeo[] = [
     path: '/thank-you/',
     primaryKeyword: 'thank you',
     secondaryKeywords: [],
-    title: 'Thank You | Pixvera',
-    description: 'Thanks for contacting Pixvera. We have received your message and will reply soon.',
+    title: 'Thank You | AceGrow',
+    description: 'Thanks for contacting AceGrow. We have received your message and will reply soon.',
     h1: 'Thank You. We Have Your Message',
     noindex: true,
   },
@@ -252,8 +252,8 @@ const pages: PageSeo[] = [
     path: '/404/',
     primaryKeyword: 'page not found',
     secondaryKeywords: [],
-    title: 'Page Not Found | Pixvera',
-    description: 'The page you are looking for could not be found. Use the links to get back to the Pixvera website.',
+    title: 'Page Not Found | AceGrow',
+    description: 'The page you are looking for could not be found. Use the links to get back to the AceGrow website.',
     h1: 'Page Not Found',
     noindex: true,
   },
@@ -283,7 +283,7 @@ const areaPages = (): PageSeo[] => {
       primaryKeyword: 'digital marketing areas Mumbai',
       secondaryKeywords: [],
       title: withBrand('Areas We Serve in Mumbai, Thane & Navi Mumbai'),
-      description: 'Local areas in Mumbai, Thane and Navi Mumbai where Pixvera works, with local research and FAQs for each.',
+      description: 'Local areas in Mumbai, Thane and Navi Mumbai where AceGrow works, with local research and FAQs for each.',
       h1: 'Areas We Serve Across Mumbai, Thane and Navi Mumbai',
     },
     ...live.map<PageSeo>((a) => ({

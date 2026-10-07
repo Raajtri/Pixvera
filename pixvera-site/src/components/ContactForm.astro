@@ -8,8 +8,8 @@ const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS
 
 <form action="https://api.web3forms.com/submit" method="POST" class="card space-y-5 !p-6 sm:!p-8">
   <input type="hidden" name="access_key" value={accessKey} />
-  <input type="hidden" name="subject" value="New enquiry from the Pixvera website" />
-  <input type="hidden" name="from_name" value="Pixvera Website" />
+  <input type="hidden" name="subject" value="New enquiry from the AceGrow website" />
+  <input type="hidden" name="from_name" value="AceGrow Website" />
   <input type="hidden" name="redirect" value={`${site.url}/thank-you/`} />
   <!-- Spam trap: real people never see or tick this -->
   <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />

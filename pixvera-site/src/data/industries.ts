@@ -6,7 +6,7 @@
  * Never write that we "have worked with" or "helped" a type of business unless that is true and provable.
  *
  * Limits (checked at build time): metaDescription up to 155 characters, directAnswer 40-60 words, 4+ FAQs.
- * The page title is generated as "Digital Marketing for {seoName} in Mumbai | Pixvera" (max 60 characters).
+ * The page title is generated as "Digital Marketing for {seoName} in Mumbai | AceGrow" (max 60 characters).
  */
 
 export interface Industry {
@@ -133,7 +133,7 @@ export const industries: Industry[] = [
     faqs: [
       { q: 'How can a salon get more bookings from Google?', a: 'Keep your Google Business Profile complete with services, photos and timings, collect reviews and give people an easy booking link or WhatsApp button. These simple steps help you appear in local searches.' },
       { q: 'Is Instagram enough for a salon?', a: 'Instagram is great for showing your work, but many people also search on Google before booking. Having both a Google listing and Instagram helps you reach more customers.' },
-      { q: 'Should I show prices online?', a: 'Showing starting prices usually helps, because it saves time for both sides. You can say "starting from" and invite people to confirm on WhatsApp.' },
+      { q: 'Should I show prices online?', a: 'Showing a clear price list or a "from" price usually helps, because it saves time for both sides. You can also invite people to confirm the exact price on WhatsApp.' },
       { q: 'Can you help with offers for slow days?', a: 'Yes. We can plan a small ad with an offer for specific days and measure how many bookings it brings.' },
     ],
     related: ['clinics-hospitals', 'gyms-fitness', 'restaurants-cafes'],

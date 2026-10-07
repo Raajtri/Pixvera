@@ -1,7 +1,7 @@
 /**
  * Content for the five Mumbai service pages (/services/[slug]/).
  * Title, meta description, H1 and keywords for each page live in seo.ts.
- * Rule: no claims about past clients or results for Pixvera. Describe what we do, not what we have "achieved".
+ * Rule: no claims about past clients or results for AceGrow. Describe what we do, not what we have "achieved".
  */
 
 export interface ServiceFaq {
