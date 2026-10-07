@@ -1,0 +1,36 @@
+---
+import { Image } from 'astro:assets';
+import placeholder from '../assets/screenshot-placeholder.png';
+
+/**
+ * Screenshot slot. To use a real screenshot: save it in src/assets/, import it here (or pass `src`),
+ * and write real alt text. astro:assets converts it to WebP and sets width/height automatically.
+ */
+interface Props {
+  label: string;
+  alt?: string;
+  src?: ImageMetadata;
+  eager?: boolean;
+}
+const { label, alt, src = placeholder, eager = false } = Astro.props;
+const isPlaceholder = src === placeholder;
+---
+
+<figure class="reveal">
+  <div class="overflow-hidden rounded-2xl border-2 border-dashed border-indigo-300 bg-white shadow-soft">
+    <Image
+      src={src}
+      alt={alt ?? `Placeholder for screenshot: ${label}`}
+      widths={[480, 720, 1000]}
+      sizes="(min-width: 768px) 560px, 92vw"
+      format="webp"
+      quality={70}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+      class="h-auto w-full"
+    />
+  </div>
+  <figcaption class="mt-3 text-sm text-ink-soft">
+    {isPlaceholder ? <span class="placeholder-tag">[SCREENSHOT: {label}]</span> : label}
+  </figcaption>
+</figure>

@@ -76,7 +76,7 @@ export const industries: Industry[] = [
     icon: 'heart',
     cardText: 'Help patients find your clinic, see your doctors and book with confidence.',
     metaDescription:
-      'Digital marketing for clinics and hospitals in Mumbai: Google Maps, doctor profile pages, patient reviews and compliant ads. Start with a free Google listing check.',
+      'Digital marketing for clinics and hospitals in Mumbai: Google Maps, doctor pages, patient reviews and compliant ads. Start with a free listing check.',
     directAnswer:
       'Digital marketing for clinics and hospitals in Mumbai helps patients find you on Google Maps, read about your doctors and services, and book an appointment easily. We build clear service pages, tidy your Google Business Profile and manage ads carefully, keeping all content factual and within healthcare advertising rules.',
     intro:
@@ -146,7 +146,7 @@ export const industries: Industry[] = [
     icon: 'graduation',
     cardText: 'Be the first result parents and students see during admission season.',
     metaDescription:
-      'Digital marketing for schools, colleges and coaching classes in Mumbai: rank for admission searches, clear course pages and enquiry tracking. Free listing check.',
+      'Digital marketing for schools, colleges and coaching in Mumbai: rank for admission searches, clear course pages and enquiry tracking. Free listing check.',
     directAnswer:
       'Digital marketing for schools, colleges and coaching classes in Mumbai helps parents and students find you when they search for admissions and courses. We build clear course pages, improve your Google Business Profile and website for local searches, and set up enquiry tracking so you know where applicants come from.',
     intro:
@@ -181,7 +181,7 @@ export const industries: Industry[] = [
     icon: 'building',
     cardText: 'Get buyers and tenants to find your projects and listings on Google.',
     metaDescription:
-      'Digital marketing for real estate in Mumbai: project pages, Google Maps, lead forms and compliant ads for brokers and developers. Ask for a free listing check.',
+      'Digital marketing for real estate in Mumbai: project pages, Google Maps, lead forms and compliant ads for brokers and developers. Free listing check.',
     directAnswer:
       'Digital marketing for real estate in Mumbai helps buyers and tenants find your projects and listings on Google. We build clear project pages, improve your Google Business Profile, run Google and Meta ads with lead tracking, and keep your marketing within the rules that apply to property advertising.',
     intro:

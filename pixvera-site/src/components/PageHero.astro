@@ -1,0 +1,23 @@
+---
+import Breadcrumbs from './Breadcrumbs.astro';
+import type { Crumb } from './Breadcrumbs.astro';
+interface Props {
+  h1: string;
+  crumbs?: Crumb[];
+  eyebrow?: string;
+  lead?: string;
+}
+const { h1, crumbs, eyebrow, lead } = Astro.props;
+---
+
+<section class="relative overflow-hidden border-b border-line bg-white">
+  <div class="pixel-grid pointer-events-none absolute inset-0" aria-hidden="true"></div>
+  <div class="blob blob-indigo -right-24 -top-24 h-72 w-72 sm:h-96 sm:w-96" aria-hidden="true"></div>
+  <div class="wrap relative pb-10 pt-8 md:pb-14 md:pt-12">
+    {crumbs && <Breadcrumbs crumbs={crumbs} />}
+    {eyebrow && <p class="eyebrow mb-3">{eyebrow}</p>}
+    <h1 class="max-w-3xl text-[2rem] sm:text-5xl">{h1}</h1>
+    {lead && <p class="mt-4 max-w-2xl text-lg text-ink-soft">{lead}</p>}
+    <slot />
+  </div>
+</section>

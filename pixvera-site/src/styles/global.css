@@ -1,0 +1,356 @@
+@import 'tailwindcss';
+
+/* Self-hosted fonts (latin subset only, 4 files). */
+@import '@fontsource/inter/latin-400.css';
+@import '@fontsource/inter/latin-600.css';
+@import '@fontsource/plus-jakarta-sans/latin-700.css';
+@import '@fontsource/plus-jakarta-sans/latin-800.css';
+
+@theme {
+  --color-paper: #fafafc;
+  --color-ink: #0b1b3a;
+  --color-ink-soft: #475569; /* body copy on light: 7.5:1 on paper */
+  --color-brand: #4f46e5;
+  --color-brand-dark: #4338ca;
+  --color-brand-light: #818cf8;
+  --color-brand-tint: #eef2ff;
+  --color-accent: #ff7a1a;
+  --color-accent-dark: #e8650a;
+  --color-line: #e2e8f0;
+  --color-wa: #0e7a42;
+
+  --font-heading: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Inter', 'Inter Fallback', ui-sans-serif, system-ui, sans-serif;
+
+  --shadow-soft: 0 1px 2px rgb(11 27 58 / 0.04), 0 8px 24px -8px rgb(11 27 58 / 0.1);
+  --shadow-lift: 0 2px 4px rgb(11 27 58 / 0.05), 0 18px 40px -12px rgb(79 70 229 / 0.25);
+}
+
+/* Metric-matched fallbacks so text does not jump when the web fonts arrive (keeps CLS near 0). */
+@font-face {
+  font-family: 'Inter Fallback';
+  src: local('Arial');
+  size-adjust: 107%;
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: 'Plus Jakarta Sans Fallback';
+  src: local('Arial');
+  size-adjust: 104%;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-heading);
+    color: var(--color-ink);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+  h1 {
+    font-weight: 800;
+  }
+  h2,
+  h3,
+  h4 {
+    font-weight: 700;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 3px;
+    border-radius: 0.5rem;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .wrap {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 40rem) {
+    .wrap {
+      padding-inline: 2rem;
+    }
+  }
+  .section {
+    padding-block: 4rem;
+  }
+  @media (min-width: 48rem) {
+    .section {
+      padding-block: 6rem;
+    }
+  }
+
+  /* Buttons. Orange buttons use navy text for AA contrast (white on orange fails). */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-align: center;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+  .btn:active {
+    transform: translateY(0);
+  }
+  .btn-primary {
+    background: var(--color-accent);
+    color: var(--color-ink);
+    box-shadow: 0 8px 20px -8px rgb(255 122 26 / 0.7);
+  }
+  .btn-primary:hover {
+    background: var(--color-accent-dark);
+    box-shadow: 0 12px 24px -8px rgb(255 122 26 / 0.8);
+  }
+  .btn-ghost {
+    background: #fff;
+    color: var(--color-ink);
+    border: 1.5px solid var(--color-line);
+  }
+  .btn-ghost:hover {
+    border-color: var(--color-brand);
+    color: var(--color-brand-dark);
+  }
+  .btn-brand {
+    background: var(--color-brand);
+    color: #fff;
+  }
+  .btn-brand:hover {
+    background: var(--color-brand-dark);
+  }
+  .btn-wa {
+    background: var(--color-wa);
+    color: #fff;
+  }
+  .btn-wa:hover {
+    background: #0a6035;
+  }
+  .btn-light {
+    background: #fff;
+    color: var(--color-ink);
+  }
+  .btn-sm {
+    min-height: 2.75rem;
+    padding: 0.5rem 1.1rem;
+    font-size: 0.95rem;
+  }
+
+  .card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 1rem; /* rounded-2xl */
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+  }
+  a.card:hover,
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lift);
+    border-color: #c7d2fe;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-brand-dark);
+  }
+  .on-dark .eyebrow,
+  .eyebrow-dark {
+    color: #a5b4fc;
+  }
+
+  .icon-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.875rem;
+    background: var(--color-brand-tint);
+    color: var(--color-brand);
+    flex: none;
+  }
+
+  /* Faint pixel-grid background accent */
+  .pixel-grid {
+    background-image:
+      linear-gradient(to right, rgb(79 70 229 / 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(79 70 229 / 0.07) 1px, transparent 1px);
+    background-size: 32px 32px;
+    mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, transparent 85%);
+  }
+  .pixel-grid-dark {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.06) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.06) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  /* Gradient blobs use radial-gradients (cheap) instead of blur filters (slow on phones). */
+  .blob {
+    position: absolute;
+    border-radius: 9999px;
+    pointer-events: none;
+  }
+  .blob-indigo {
+    background: radial-gradient(closest-side, rgb(79 70 229 / 0.28), transparent);
+  }
+  .blob-orange {
+    background: radial-gradient(closest-side, rgb(255 122 26 / 0.26), transparent);
+  }
+
+  /* Scroll reveal: only hidden when JS is running, so content never disappears without JS. */
+  .js .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease;
+    transition-delay: var(--d, 0ms);
+  }
+  .js .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Article / long-form text */
+  .prose-pix {
+    font-size: 1.0625rem;
+    color: #1e293b;
+  }
+  .prose-pix > * + * {
+    margin-top: 1.1rem;
+  }
+  .prose-pix h2 {
+    font-size: 1.6rem;
+    margin-top: 2.5rem;
+  }
+  .prose-pix h3 {
+    font-size: 1.25rem;
+    margin-top: 1.75rem;
+  }
+  .prose-pix ul,
+  .prose-pix ol {
+    padding-left: 1.4rem;
+  }
+  .prose-pix ul {
+    list-style: disc;
+  }
+  .prose-pix ol {
+    list-style: decimal;
+  }
+  .prose-pix li + li {
+    margin-top: 0.4rem;
+  }
+  .prose-pix a:not(.btn) {
+    color: var(--color-brand-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-pix a:not(.btn):hover {
+    color: var(--color-ink);
+  }
+  .prose-pix strong {
+    color: var(--color-ink);
+  }
+  .prose-pix blockquote {
+    border-left: 4px solid var(--color-accent);
+    padding-left: 1rem;
+    color: var(--color-ink-soft);
+  }
+
+  /* Form fields */
+  .field {
+    width: 100%;
+    min-height: 3rem;
+    padding: 0.7rem 1rem;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 0.75rem;
+    background: #fff;
+    color: var(--color-ink);
+    font: inherit;
+  }
+  .field:focus {
+    border-color: var(--color-brand);
+    outline: 3px solid rgb(79 70 229 / 0.2);
+    outline-offset: 0;
+  }
+
+  .placeholder-tag {
+    display: inline;
+    background: #fff4e5;
+    color: #7c3a00;
+    border: 1px dashed #ff9d4d;
+    border-radius: 0.375rem;
+    padding: 0.05rem 0.4rem;
+    font-size: 0.92em;
+    font-weight: 600;
+  }
+}
+
+.sr-only-focusable:not(:focus):not(:focus-within) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import CTABand from '../../components/CTABand.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { seoFor } from '../../data/seo';
+import { servicePages } from '../../data/services';
+import { services as summaries } from '../../data/site';
+
+const seo = seoFor('/services/');
+const crumbs = [{ name: 'Services', href: '/services/' }];
+
+// WhatsApp lead set-up is part of the Meta ads service page but deserves its own section here.
+const whatsappBlock = {
+  id: 'whatsapp-lead-setup',
+  name: 'WhatsApp Lead Set-up',
+  icon: 'whatsapp',
+  short: 'Make it easy for customers to message you, and make sure no enquiry gets lost.',
+  href: '/services/instagram-facebook-ads-mumbai/',
+  included: [
+    'WhatsApp Business profile, catalogue and greeting message',
+    'Click-to-WhatsApp buttons on your website and Google profile',
+    'Quick replies for your most common questions',
+    'A simple enquiry tracking sheet',
+  ],
+  notIncluded: [
+    'Replying to your customers on your behalf',
+    'Bulk or spam messaging, which WhatsApp rules do not allow',
+    'WhatsApp Business API provider fees, if you choose the API',
+  ],
+};
+---
+
+<BaseLayout seo={seo} crumbs={crumbs}>
+  <PageHero
+    h1={seo.h1}
+    crumbs={crumbs}
+    eyebrow="Mumbai · Thane · Navi Mumbai"
+    lead="Five clear services. Each one says what you get and what you do not, so there are no surprises later."
+  />
+
+  <section class="section">
+    <div class="wrap space-y-8">
+      {
+        servicePages.map((s) => {
+          const summary = summaries.find((x) => x.slug === s.slug);
+          return (
+            <article id={s.slug} class="card reveal !p-6 sm:!p-8">
+              <div class="flex items-start gap-4">
+                <span class="icon-chip"><Icon name={s.icon} /></span>
+                <div>
+                  <h2 class="text-2xl sm:text-3xl">{s.name}</h2>
+                  <p class="mt-2 text-ink-soft">{summary?.short}</p>
+                </div>
+              </div>
+              <div class="mt-6 grid gap-6 md:grid-cols-2">
+                <div>
+                  <h3 class="text-lg">What is included</h3>
+                  <ul class="mt-3 space-y-2.5">
+                    {s.included.slice(0, 5).map((t) => (
+                      <li class="flex gap-2.5 text-[0.97rem]"><Icon name="check" size={20} class="mt-0.5 flex-none text-brand" /><span>{t}</span></li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <h3 class="text-lg">What is not included</h3>
+                  <ul class="mt-3 space-y-2.5">
+                    {s.notIncluded.slice(0, 4).map((t) => (
+                      <li class="flex gap-2.5 text-[0.97rem] text-ink-soft"><Icon name="x" size={20} class="mt-0.5 flex-none text-slate-500" /><span>{t}</span></li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <a href={`/services/${s.slug}/`} class="btn btn-brand mt-7 w-full sm:w-auto">
+                Full details: {s.name} <Icon name="arrow-right" size={18} />
+              </a>
+            </article>
+          );
+        })
+      }
+
+      <article id={whatsappBlock.id} class="card reveal !p-6 sm:!p-8">
+        <div class="flex items-start gap-4">
+          <span class="icon-chip"><Icon name="whatsapp" /></span>
+          <div>
+            <h2 class="text-2xl sm:text-3xl">{whatsappBlock.name}</h2>
+            <p class="mt-2 text-ink-soft">{whatsappBlock.short}</p>
+          </div>
+        </div>
+        <div class="mt-6 grid gap-6 md:grid-cols-2">
+          <div>
+            <h3 class="text-lg">What is included</h3>
+            <ul class="mt-3 space-y-2.5">
+              {whatsappBlock.included.map((t) => (
+                <li class="flex gap-2.5 text-[0.97rem]"><Icon name="check" size={20} class="mt-0.5 flex-none text-brand" /><span>{t}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg">What is not included</h3>
+            <ul class="mt-3 space-y-2.5">
+              {whatsappBlock.notIncluded.map((t) => (
+                <li class="flex gap-2.5 text-[0.97rem] text-ink-soft"><Icon name="x" size={20} class="mt-0.5 flex-none text-slate-500" /><span>{t}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <a href={whatsappBlock.href} class="btn btn-brand mt-7 w-full sm:w-auto">
+          See Instagram, Facebook &amp; WhatsApp ads <Icon name="arrow-right" size={18} />
+        </a>
+      </article>
+    </div>
+  </section>
+
+  <RelatedLinks
+    items={[
+      { href: '/pricing/', title: 'Pricing and plans', text: 'What affects the cost, and what each plan includes.' },
+      { href: '/industries/', title: 'Businesses we help', text: 'See how we approach your type of business.' },
+      { href: '/case-study/', title: 'Case study', text: 'A Mumbai college website, from #3 to #1 on Google.' },
+    ]}
+  />
+  <CTABand />
+</BaseLayout>

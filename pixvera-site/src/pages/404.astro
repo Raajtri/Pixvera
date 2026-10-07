@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { seoFor } from '../data/seo';
+
+const seo = seoFor('/404/');
+---
+
+<BaseLayout seo={seo}>
+  <PageHero h1={seo.h1} lead="Sorry, we could not find that page. It may have moved, or the link may have a typing mistake.">
+    <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+      <a href="/" class="btn btn-primary">Go to the home page</a>
+      <a href="/contact/" class="btn btn-ghost">Contact us</a>
+    </div>
+  </PageHero>
+  <RelatedLinks
+    heading="Maybe you were looking for"
+    items={[
+      { href: '/services/', title: 'Our services', text: 'Local SEO, websites, ads and apps.' },
+      { href: '/pricing/', title: 'Pricing', text: 'What affects the cost and what plans include.' },
+      { href: '/blog/', title: 'Guides', text: 'Free, plain-language marketing guides.' },
+    ]}
+  />
+</BaseLayout>

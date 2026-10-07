@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { seoFor } from '../data/seo';
+import { site } from '../data/site';
+
+const seo = seoFor('/terms/');
+const crumbs = [{ name: 'Terms of Service', href: '/terms/' }];
+---
+
+<BaseLayout seo={seo} crumbs={crumbs}>
+  <PageHero h1={seo.h1} crumbs={crumbs} lead="Last updated: [DATE]. Simple terms for using this website and enquiring about our services. [HAVE A LAWYER REVIEW THEM BEFORE LAUNCH.]" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="prose-pix max-w-3xl">
+        <h2>Using this website</h2>
+        <p>The information on this website is for general guidance about {site.name} and our services. Please do not copy our content without permission.</p>
+
+        <h2>Our services and quotes</h2>
+        <p>Each project is agreed in a written quote or proposal that lists what is included, the price and the timeline. If something is not in the quote, it is not included. Prices shown on this website are "starting from" amounts and may change based on your needs.</p>
+
+        <h2>No guaranteed results</h2>
+        <p>We work carefully on SEO, ads, websites and apps, but we cannot guarantee rankings, traffic, enquiries or sales. Search engines and ad platforms make their own decisions and change their rules often.</p>
+
+        <h2>Costs paid by you</h2>
+        <p>Ad spend, domain names, hosting, app store accounts and third-party tools are paid by you directly, unless the quote says otherwise.</p>
+
+        <h2>Payments</h2>
+        <p>[ADD YOUR PAYMENT TERMS: for example, advance percentage, invoice due dates and what happens with late payments.]</p>
+
+        <h2>Your content and ownership</h2>
+        <p>You must have the right to use the text, images and logos you give us. When the project is paid in full, you own the website content and design we create for you, except for third-party tools or fonts that have their own licences. [CONFIRM OWNERSHIP TERMS.]</p>
+
+        <h2>Limits of liability</h2>
+        <p>To the extent allowed by law, {site.name} is not liable for indirect losses, such as lost profit, that result from using our services or this website.</p>
+
+        <h2>Governing law</h2>
+        <p>These terms are governed by the laws of India. Any dispute will be handled in the courts of Mumbai. [CONFIRM WITH YOUR LAWYER.]</p>
+
+        <h2>Changes to these terms</h2>
+        <p>We may update these terms from time to time. The date at the top shows when they were last changed.</p>
+      </div>
+    </div>
+  </section>
+
+  <RelatedLinks
+    parent={{ href: '/', label: 'home' }}
+    items={[
+      { href: '/privacy/', title: 'Privacy Policy', text: 'How we handle the information you share.' },
+      { href: '/contact/', title: 'Contact us', text: 'Ask a question or request a free check.' },
+      { href: '/pricing/', title: 'Pricing', text: 'What affects the cost and what our plans include.' },
+    ]}
+  />
+</BaseLayout>

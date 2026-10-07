@@ -1,0 +1,62 @@
+---
+import { industries } from '../data/industries';
+import { site } from '../data/site';
+
+// Web3Forms access key: set PUBLIC_WEB3FORMS_KEY in .env (see .env.example). Public by design.
+const accessKey = import.meta.env.PUBLIC_WEB3FORMS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY';
+---
+
+<form action="https://api.web3forms.com/submit" method="POST" class="card space-y-5 !p-6 sm:!p-8">
+  <input type="hidden" name="access_key" value={accessKey} />
+  <input type="hidden" name="subject" value="New enquiry from the Pixvera website" />
+  <input type="hidden" name="from_name" value="Pixvera Website" />
+  <input type="hidden" name="redirect" value={`${site.url}/thank-you/`} />
+  <!-- Spam trap: real people never see or tick this -->
+  <input type="checkbox" name="botcheck" class="hidden" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="name" class="mb-1.5 block text-sm font-semibold">Your name <span class="text-ink-soft">(required)</span></label>
+      <input id="name" name="name" type="text" required autocomplete="name" class="field" />
+    </div>
+    <div>
+      <label for="phone" class="mb-1.5 block text-sm font-semibold">WhatsApp number <span class="text-ink-soft">(required)</span></label>
+      <input id="phone" name="phone" type="tel" inputmode="tel" required autocomplete="tel" class="field" />
+    </div>
+  </div>
+
+  <div class="grid gap-5 sm:grid-cols-2">
+    <div>
+      <label for="email" class="mb-1.5 block text-sm font-semibold">Email <span class="text-ink-soft">(optional)</span></label>
+      <input id="email" name="email" type="email" autocomplete="email" class="field" />
+    </div>
+    <div>
+      <label for="business_type" class="mb-1.5 block text-sm font-semibold">Type of business <span class="text-ink-soft">(required)</span></label>
+      <select id="business_type" name="business_type" required class="field">
+        <option value="" disabled selected>Choose one</option>
+        {industries.map((i) => <option value={i.name}>{i.name}</option>)}
+        <option value="Other">Other (tell us below)</option>
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label for="business_name" class="mb-1.5 block text-sm font-semibold">Business name and area <span class="text-ink-soft">(helps us check your Google listing)</span></label>
+    <input id="business_name" name="business_name" type="text" autocomplete="organization" class="field" />
+  </div>
+
+  <div>
+    <label for="website" class="mb-1.5 block text-sm font-semibold">Website or Google Maps link <span class="text-ink-soft">(if you have one)</span></label>
+    <input id="website" name="website" type="url" inputmode="url" placeholder="https://" class="field" />
+  </div>
+
+  <div>
+    <label for="message" class="mb-1.5 block text-sm font-semibold">What do you need help with?</label>
+    <textarea id="message" name="message" rows="4" class="field"></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-primary w-full">Send my details</button>
+  <p class="text-sm text-ink-soft">
+    We use your details only to reply to you. Read our <a href="/privacy/" class="font-semibold text-brand-dark underline">privacy policy</a>.
+  </p>
+</form>

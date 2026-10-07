@@ -1,0 +1,80 @@
+---
+/**
+ * /areas/ hub and /areas/<slug>/ pages.
+ * With no `status: "live"` entries in src/data/areas.ts this file generates NOTHING (no hub, no pages).
+ * Each live area is quality-checked at build time so thin pages can never ship by accident.
+ */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import AreaLayout from '../../layouts/AreaLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import CTABand from '../../components/CTABand.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { liveAreas } from '../../data/areas';
+import { seoFor } from '../../data/seo';
+import { services } from '../../data/site';
+
+export function getStaticPaths() {
+  const live = liveAreas();
+  if (live.length === 0) return [];
+  // getStaticPaths runs in its own scope, so helpers must be defined inside it.
+  const wordCount = (s: string) => s.trim().split(/\s+/).filter(Boolean).length;
+
+  for (const a of live) {
+    const words = a.sections.flatMap((s) => [s.h2, ...s.paragraphs]).reduce((n, t) => n + wordCount(t), 0);
+    const problems: string[] = [];
+    if (words < 400) problems.push(`needs 400+ words of unique content (has ${words})`);
+    if (a.faqs.length < 4) problems.push('needs at least 4 area-specific FAQs');
+    if (/\[|\]/.test(a.name + a.directAnswer + a.metaDescription + a.sections.map((s) => s.paragraphs.join(' ')).join(' '))) {
+      problems.push('still contains [PLACEHOLDER] text');
+    }
+    if (!a.research.findings.length) problems.push('needs real findings from your local Google Maps research');
+    if (a.metaDescription.length > 155) problems.push('metaDescription is over 155 characters');
+    const da = wordCount(a.directAnswer);
+    if (da < 40 || da > 60) problems.push(`directAnswer must be 40-60 words (has ${da})`);
+    if (problems.length) {
+      throw new Error(`Area "${a.slug}" is marked live but is not ready: ${problems.join('; ')}.`);
+    }
+  }
+
+  return [
+    { params: { slug: undefined }, props: { hub: true } },
+    ...live.map((area) => ({ params: { slug: area.slug }, props: { area } })),
+  ];
+}
+
+const { area } = Astro.props as { hub?: boolean; area?: ReturnType<typeof liveAreas>[number] };
+const live = liveAreas();
+---
+
+{
+  area ? (
+    <AreaLayout area={area} />
+  ) : (
+    <BaseLayout seo={seoFor('/areas/')} crumbs={[{ name: 'Areas', href: '/areas/' }]}>
+      <PageHero
+        h1={seoFor('/areas/').h1}
+        crumbs={[{ name: 'Areas', href: '/areas/' }]}
+        lead="Local pages with original research for each area we serve."
+      />
+      <section class="section">
+        <div class="wrap">
+          <ul class="grid gap-5 md:grid-cols-3">
+            {live.map((a) => (
+              <li>
+                <a href={`/areas/${a.slug}/`} class="card block">
+                  <h2 class="text-xl">{a.name}</h2>
+                  <p class="mt-2 text-sm text-ink-soft">{a.region}</p>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <RelatedLinks
+        parent={{ href: '/services/', label: 'services' }}
+        items={services.slice(0, 3).map((s) => ({ href: `/services/${s.slug}/`, title: s.name, text: s.short }))}
+      />
+      <CTABand />
+    </BaseLayout>
+  )
+}

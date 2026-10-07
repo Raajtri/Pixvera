@@ -1,0 +1,77 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { seoFor } from '../data/seo';
+import { services as serviceSummaries } from '../data/site';
+import { articleSchema } from '../lib/schema';
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const path = `/blog/${post.id}/`;
+const seo = seoFor(path);
+const crumbs = [
+  { name: 'Blog', href: '/blog/' },
+  { name: post.data.title, href: path },
+];
+
+const allPosts = await getCollection('blog');
+const related = post.data.related
+  .map((slug) => {
+    if (slug.startsWith('services/')) {
+      const s = serviceSummaries.find((x) => `services/${x.slug}` === slug);
+      return s ? { href: `/services/${s.slug}/`, title: s.name, text: s.short } : undefined;
+    }
+    const p = allPosts.find((x) => x.id === slug);
+    return p ? { href: `/blog/${p.id}/`, title: p.data.title, text: p.data.excerpt } : undefined;
+  })
+  .filter((r): r is NonNullable<typeof r> => Boolean(r));
+
+const fmt = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+
+<BaseLayout
+  seo={seo}
+  crumbs={crumbs}
+  faqs={post.data.faqs}
+  ogType="article"
+  publishedTime={post.data.date}
+  schema={[
+    articleSchema({
+      headline: seo.h1,
+      description: seo.description,
+      path,
+      datePublished: post.data.date,
+      dateModified: post.data.updated,
+    }),
+  ]}
+>
+  <PageHero h1={seo.h1} crumbs={crumbs}>
+    <p class="mt-4 text-sm text-ink-soft">
+      By the Pixvera team · <time datetime={post.data.date.toISOString()}>{fmt.format(post.data.date)}</time>
+      {post.data.readingMinutes && <> · {post.data.readingMinutes} min read</>}
+    </p>
+    <DirectAnswer text={post.data.directAnswer} />
+  </PageHero>
+
+  <article class="section pb-8">
+    <div class="wrap">
+      <div class="prose-pix max-w-3xl">
+        <Content />
+      </div>
+    </div>
+  </article>
+
+  <FAQ faqs={post.data.faqs} />
+  <RelatedLinks parent={{ href: '/blog/', label: 'all guides' }} items={related} heading="Related reading" />
+  <CTABand />
+</BaseLayout>

@@ -1,0 +1,49 @@
+---
+import Icon from './Icon.astro';
+interface Props {
+  plan: {
+    name: string;
+    from: string;
+    period: string;
+    blurb: string;
+    highlight: boolean;
+    badge?: string;
+    features: readonly string[];
+  };
+  cta?: string;
+}
+const { plan, cta = 'Ask about this plan' } = Astro.props;
+---
+
+<div
+  class:list={[
+    'card relative flex h-full flex-col',
+    plan.highlight && '!border-2 !border-brand shadow-lift md:-translate-y-2',
+  ]}
+>
+  {
+    plan.highlight && plan.badge && (
+      <span class="absolute -top-3 left-6 rounded-full bg-accent px-3 py-1 text-xs font-bold uppercase tracking-wide text-ink">
+        {plan.badge}
+      </span>
+    )
+  }
+  <h3 class="text-xl">{plan.name}</h3>
+  <p class="mt-1 text-sm text-ink-soft">{plan.blurb}</p>
+  <p class="mt-5">
+    <span class="block text-sm font-semibold text-ink-soft">Starting from</span>
+    <span class="font-heading text-4xl font-extrabold text-ink">{plan.from}</span>
+    <span class="ml-1 text-sm text-ink-soft">{plan.period}</span>
+  </p>
+  <ul class="mt-6 flex-1 space-y-3 text-[0.95rem]">
+    {
+      plan.features.map((f) => (
+        <li class="flex gap-2.5">
+          <Icon name="check" size={20} class="mt-0.5 flex-none text-brand" />
+          <span>{f}</span>
+        </li>
+      ))
+    }
+  </ul>
+  <a href="/contact/" class:list={['btn mt-7 w-full', plan.highlight ? 'btn-primary' : 'btn-ghost']}>{cta}</a>
+</div>

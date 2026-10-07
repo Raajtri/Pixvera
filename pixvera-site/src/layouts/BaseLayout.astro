@@ -1,0 +1,113 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import type { Crumb } from '../components/Breadcrumbs.astro';
+import type { PageSeo } from '../data/seo';
+import { site, absoluteUrl } from '../data/site';
+import { baseGraph, breadcrumbList, faqPage } from '../lib/schema';
+import inter400 from '@fontsource/inter/files/inter-latin-400-normal.woff2?url';
+import jakarta800 from '@fontsource/plus-jakarta-sans/files/plus-jakarta-sans-latin-800-normal.woff2?url';
+
+interface Props {
+  seo: PageSeo;
+  crumbs?: Crumb[];
+  faqs?: readonly { q: string; a: string }[];
+  /** Extra JSON-LD objects (Service, Article...). */
+  schema?: object[];
+  ogType?: 'website' | 'article';
+  publishedTime?: Date;
+}
+
+const { seo, crumbs, faqs, schema = [], ogType = 'website', publishedTime } = Astro.props;
+
+const canonical = absoluteUrl(seo.path);
+const ogImage = absoluteUrl(site.ogImage);
+const jsonLd = [
+  ...(seo.noindex ? [] : baseGraph()),
+  ...(crumbs?.length ? [breadcrumbList(crumbs)] : []),
+  ...(faqs?.length ? [faqPage(faqs)] : []),
+  ...(seo.noindex ? [] : schema),
+];
+
+const gscToken = import.meta.env.PUBLIC_GSC_VERIFICATION;
+const ga4 = import.meta.env.PUBLIC_GA4_ID;
+// GA4 loads only after the first interaction (or 8s after page load), so it never affects Lighthouse or LCP.
+const gaSnippet = ga4
+  ? `(function(){var id=${JSON.stringify(ga4)},l=false;function go(){if(l)return;l=true;var s=document.createElement('script');s.async=true;s.src='https://www.googletagmanager.com/gtag/js?id='+id;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];window.gtag=function(){dataLayer.push(arguments)};gtag('js',new Date());gtag('config',id);}['scroll','pointerdown','keydown','touchstart'].forEach(function(e){addEventListener(e,go,{once:true,passive:true})});addEventListener('load',function(){setTimeout(go,8000)});})();`
+  : '';
+---
+
+<!doctype html>
+<html lang="en-IN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    {seo.path !== '/404/' && <link rel="canonical" href={canonical} />}
+    <meta name="robots" content={seo.noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    <meta name="theme-color" content="#0B1B3A" />
+    {gscToken && <meta name="google-site-verification" content={gscToken} />}
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Pixvera, Digital Growth Studio in Mumbai: get found on Google, get more enquiries" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={jakarta800} as="font" type="font/woff2" crossorigin />
+
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+
+    {jsonLd.map((obj) => <script type="application/ld+json" set:html={JSON.stringify(obj)} />)}
+
+    {ga4 && <script is:inline set:html={gaSnippet} />}
+  </head>
+  <body>
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <WhatsAppFloat />
+
+    <script>
+      const items = document.querySelectorAll<HTMLElement>('.reveal');
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-visible');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        );
+        items.forEach((el) => io.observe(el));
+      } else {
+        items.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

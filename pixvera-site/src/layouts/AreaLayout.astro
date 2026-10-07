@@ -1,0 +1,72 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { seoFor } from '../data/seo';
+import { liveAreas } from '../data/areas';
+import type { Area } from '../data/areas';
+import { services as serviceSummaries } from '../data/site';
+import { serviceSchema } from '../lib/schema';
+
+/** Template for /areas/[slug]/. Only renders for areas with status: "live" (see src/data/areas.ts). */
+interface Props {
+  area: Area;
+}
+const { area } = Astro.props;
+
+const path = `/areas/${area.slug}/`;
+const seo = seoFor(path);
+const crumbs = [
+  { name: 'Areas', href: '/areas/' },
+  { name: area.name, href: path },
+];
+
+const siblings = liveAreas().filter((a) => a.slug !== area.slug);
+const related = [
+  ...siblings.slice(0, 3).map((a) => ({ href: `/areas/${a.slug}/`, title: a.name, text: `Digital marketing and local SEO in ${a.name}.` })),
+  ...serviceSummaries.map((s) => ({ href: `/services/${s.slug}/`, title: s.name, text: s.short })),
+].slice(0, 3);
+---
+
+<BaseLayout
+  seo={seo}
+  crumbs={crumbs}
+  faqs={area.faqs}
+  schema={[
+    serviceSchema({
+      name: seo.h1,
+      serviceType: 'Local SEO and digital marketing',
+      description: area.metaDescription,
+      path,
+    }),
+  ]}
+>
+  <PageHero h1={seo.h1} crumbs={crumbs} eyebrow={area.region}>
+    <DirectAnswer text={area.directAnswer} />
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap prose-pix max-w-3xl">
+      {
+        area.sections.map((s) => (
+          <>
+            <h2>{s.h2}</h2>
+            {s.paragraphs.map((p) => <p>{p}</p>)}
+          </>
+        ))
+      }
+
+      <h2>What we found: our local research for {area.name}</h2>
+      <p>{area.research.summary}</p>
+      {area.research.findings.length > 0 && <ul>{area.research.findings.map((f) => <li>{f}</li>)}</ul>}
+      <p class="text-sm text-ink-soft">Method: {area.research.method} Date: {area.research.date}.</p>
+    </div>
+  </section>
+
+  <FAQ faqs={area.faqs} />
+  <RelatedLinks parent={{ href: '/areas/', label: 'all areas' }} items={related} />
+  <CTABand />
+</BaseLayout>

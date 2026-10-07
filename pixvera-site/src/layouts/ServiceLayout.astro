@@ -1,0 +1,130 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import DirectAnswer from '../components/DirectAnswer.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import Icon from '../components/Icon.astro';
+import { seoFor } from '../data/seo';
+import { servicePages } from '../data/services';
+import type { ServicePage } from '../data/services';
+import { serviceSchema } from '../lib/schema';
+import { whatsappLink, services as serviceSummaries } from '../data/site';
+import { getCollection } from 'astro:content';
+
+interface Props {
+  service: ServicePage;
+}
+const { service } = Astro.props;
+
+const path = `/services/${service.slug}/`;
+const seo = seoFor(path);
+const crumbs = [
+  { name: 'Services', href: '/services/' },
+  { name: service.name, href: path },
+];
+
+const others = servicePages.filter((s) => s.slug !== service.slug);
+const posts = await getCollection('blog');
+const blogLinks = service.blog
+  .map((slug) => posts.find((p) => p.id === slug))
+  .filter((p): p is NonNullable<typeof p> => Boolean(p))
+  .map((p) => ({ href: `/blog/${p.id}/`, title: p.data.title, text: p.data.excerpt }));
+
+// 3 related pages: the two closest services plus one helpful guide.
+const related = [
+  ...others.slice(0, 2).map((s) => ({
+    href: `/services/${s.slug}/`,
+    title: s.name,
+    text: serviceSummaries.find((x) => x.slug === s.slug)?.short ?? '',
+  })),
+  ...(blogLinks.length ? [blogLinks[0]] : [{ href: '/pricing/', title: 'Pricing', text: 'What affects the cost and what our plans include.' }]),
+];
+---
+
+<BaseLayout
+  seo={seo}
+  crumbs={crumbs}
+  faqs={service.faqs}
+  schema={[serviceSchema({ name: seo.h1, serviceType: service.serviceType, description: service.schemaDescription, path })]}
+>
+  <PageHero h1={seo.h1} crumbs={crumbs} eyebrow="Mumbai · Thane · Navi Mumbai">
+    <DirectAnswer text={service.directAnswer} />
+    <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+      <a href="/contact/" class="btn btn-primary">Get a Free Google Listing Check</a>
+      <a href={whatsappLink(`Hi Pixvera, I am interested in ${service.name}.`)} target="_blank" rel="noopener" class="btn btn-ghost">
+        <Icon name="whatsapp" size={20} class="text-wa" /> Ask on WhatsApp
+      </a>
+    </div>
+  </PageHero>
+
+  <section class="section">
+    <div class="wrap grid gap-12 lg:grid-cols-[1fr_20rem]">
+      <div class="prose-pix max-w-3xl">
+        {
+          service.sections.map((s) => (
+            <>
+              <h2>{s.h2}</h2>
+              {s.paragraphs.map((p) => <p>{p}</p>)}
+            </>
+          ))
+        }
+      </div>
+      <aside class="card self-start lg:sticky lg:top-24">
+        <h2 class="text-lg">How it works</h2>
+        <ol class="mt-4 space-y-4">
+          {
+            service.steps.map((st, i) => (
+              <li class="flex gap-3">
+                <span class="flex h-8 w-8 flex-none items-center justify-center rounded-full bg-brand text-sm font-bold text-white">{i + 1}</span>
+                <span>
+                  <strong class="font-heading">{st.title}</strong>
+                  <span class="block text-sm text-ink-soft">{st.text}</span>
+                </span>
+              </li>
+            ))
+          }
+        </ol>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section bg-white pt-0 md:pt-0">
+    <div class="wrap grid gap-6 md:grid-cols-2">
+      <div class="card">
+        <h2 class="text-2xl">What is included</h2>
+        <ul class="mt-5 space-y-3">
+          {
+            service.included.map((t) => (
+              <li class="flex gap-2.5">
+                <Icon name="check" size={20} class="mt-0.5 flex-none text-brand" />
+                <span>{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="card bg-slate-50">
+        <h2 class="text-2xl">What is not included</h2>
+        <ul class="mt-5 space-y-3">
+          {
+            service.notIncluded.map((t) => (
+              <li class="flex gap-2.5">
+                <Icon name="x" size={20} class="mt-0.5 flex-none text-slate-500" />
+                <span class="text-ink-soft">{t}</span>
+              </li>
+            ))
+          }
+        </ul>
+        <p class="mt-6 text-sm text-ink-soft">
+          Not sure if something is covered? Ask us before you decide. See <a href="/pricing/" class="font-semibold text-brand-dark underline">pricing</a> for plans.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <FAQ faqs={service.faqs} />
+  <RelatedLinks parent={{ href: '/services/', label: 'all services' }} items={related} />
+  <CTABand />
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import Icon from './Icon.astro';
+export interface RelatedItem {
+  href: string;
+  title: string;
+  text: string;
+}
+interface Props {
+  parent?: { href: string; label: string };
+  items: readonly RelatedItem[];
+  heading?: string;
+}
+const { parent, items, heading = 'Keep exploring' } = Astro.props;
+---
+
+<section class="section border-t border-line bg-white" aria-labelledby="related-heading" data-related>
+  <div class="wrap">
+    <div class="flex flex-wrap items-end justify-between gap-3">
+      <h2 id="related-heading" class="text-2xl sm:text-3xl">{heading}</h2>
+      {
+        parent && (
+          <a href={parent.href} class="inline-flex min-h-11 items-center gap-1 font-semibold text-brand-dark hover:underline">
+            Back to {parent.label} <Icon name="arrow-right" size={18} />
+          </a>
+        )
+      }
+    </div>
+    <ul class="mt-6 grid gap-4 md:grid-cols-3">
+      {
+        items.slice(0, 3).map((r) => (
+          <li>
+            <a href={r.href} class="card flex h-full flex-col">
+              <span class="font-heading text-lg font-bold text-ink">{r.title}</span>
+              <span class="mt-2 text-sm text-ink-soft">{r.text}</span>
+              <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-dark">
+                Read more <Icon name="arrow-right" size={16} />
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

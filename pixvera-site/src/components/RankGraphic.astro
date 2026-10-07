@@ -1,0 +1,32 @@
+---
+/** Before/after rank graphic for the case study. The #3 to #1 jump is the founder's stated result. */
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<figure class="mx-auto w-full max-w-md" role="group" aria-label="Google ranking moved from number 3 to number 1">
+  <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-5">
+    <div class="rounded-2xl border border-line bg-white p-4 text-center shadow-soft sm:p-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-ink-soft">Before</p>
+      <p class="font-heading text-5xl font-extrabold text-ink-soft sm:text-6xl">#3</p>
+      <p class="text-xs text-ink-soft">on Google</p>
+    </div>
+    <svg viewBox="0 0 48 24" width="44" height="22" aria-hidden="true" class="text-accent">
+      <path d="M2 12h38M30 3l10 9-10 9" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+    </svg>
+    <div class="rounded-2xl border-2 border-brand bg-white p-4 text-center shadow-lift sm:p-6">
+      <p class="text-xs font-bold uppercase tracking-widest text-brand-dark">After</p>
+      <p class="font-heading text-5xl font-extrabold text-brand sm:text-6xl">#1</p>
+      <p class="text-xs text-ink-soft">on Google</p>
+    </div>
+  </div>
+  {
+    !compact && (
+      <figcaption class="mt-4 text-center text-sm text-ink-soft">
+        A Mumbai college website, for its main searches. A previous role of our founder.
+      </figcaption>
+    )
+  }
+</figure>

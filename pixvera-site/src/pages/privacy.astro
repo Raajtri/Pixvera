@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { seoFor } from '../data/seo';
+import { site, isPlaceholder } from '../data/site';
+
+const seo = seoFor('/privacy/');
+const crumbs = [{ name: 'Privacy Policy', href: '/privacy/' }];
+---
+
+<BaseLayout seo={seo} crumbs={crumbs}>
+  <PageHero h1={seo.h1} crumbs={crumbs} lead="Last updated: [DATE]. This is a simple policy written in plain language. [HAVE A LAWYER REVIEW IT BEFORE LAUNCH.]" />
+
+  <section class="section">
+    <div class="wrap">
+      <div class="prose-pix max-w-3xl">
+        <h2>Who we are</h2>
+        <p>{site.name} ({site.descriptor}) is a digital marketing and web studio serving {site.serviceAreas.join(', ')}. This policy explains what we do with the information you share on this website.</p>
+
+        <h2>What we collect</h2>
+        <ul>
+          <li><strong>Contact form details:</strong> your name, WhatsApp number, email (optional), type of business, business name and area, website link and your message.</li>
+          <li><strong>WhatsApp messages:</strong> if you message us on WhatsApp, we see your number and what you send, as with any WhatsApp chat.</li>
+          <li><strong>Website usage data:</strong> if analytics is switched on, we use Google Analytics to see anonymous information such as pages viewed, device type and approximate location.</li>
+        </ul>
+
+        <h2>How we use it</h2>
+        <p>We use your details only to reply to your enquiry, provide the service you ask for, and improve this website. We do not sell your information.</p>
+
+        <h2>Who else sees it</h2>
+        <ul>
+          <li><strong>Web3Forms</strong> delivers contact form messages to us by email. It processes the details you type into the form.</li>
+          <li><strong>Google Analytics</strong> processes anonymous usage data, if enabled.</li>
+          <li><strong>WhatsApp (Meta)</strong> carries messages you send through WhatsApp.</li>
+        </ul>
+
+        <h2>How long we keep it</h2>
+        <p>We keep enquiry details for as long as needed to respond and to keep a record of our work together. [CONFIRM RETENTION PERIOD.] You can ask us to delete your details at any time.</p>
+
+        <h2>Your choices</h2>
+        <p>You can ask to see, correct or delete the information we hold about you. You can also stop us contacting you at any time. We aim to handle personal data in line with applicable Indian law.</p>
+
+        <h2>Contact us about privacy</h2>
+        <p>
+          Email {isPlaceholder(site.email) ? site.email : <a href={`mailto:${site.email}`}>{site.email}</a>} or message us on WhatsApp at {site.phoneDisplay}.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <RelatedLinks
+    parent={{ href: '/', label: 'home' }}
+    items={[
+      { href: '/terms/', title: 'Terms of Service', text: 'The simple terms that apply when you use our site.' },
+      { href: '/contact/', title: 'Contact us', text: 'Ask a question or request a free check.' },
+      { href: '/services/', title: 'Our services', text: 'Local SEO, websites, ads and apps.' },
+    ]}
+  />
+</BaseLayout>

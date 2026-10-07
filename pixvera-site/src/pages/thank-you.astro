@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import { seoFor } from '../data/seo';
+import { whatsappLink } from '../data/site';
+import Icon from '../components/Icon.astro';
+
+const seo = seoFor('/thank-you/');
+---
+
+<BaseLayout seo={seo}>
+  <PageHero h1={seo.h1} lead="We will reply as soon as we can, usually on WhatsApp. If it is urgent, message us directly.">
+    <div class="mt-7 flex flex-col gap-3 sm:flex-row">
+      <a href={whatsappLink()} target="_blank" rel="noopener" class="btn btn-wa"><Icon name="whatsapp" size={20} /> Message us on WhatsApp</a>
+      <a href="/" class="btn btn-ghost">Back to home</a>
+    </div>
+  </PageHero>
+  <RelatedLinks
+    items={[
+      { href: '/services/', title: 'Our services', text: 'Local SEO, websites, ads and apps.' },
+      { href: '/case-study/', title: 'Case study', text: 'A Mumbai college from #3 to #1 on Google.' },
+      { href: '/blog/', title: 'Guides', text: 'Free, plain-language marketing guides.' },
+    ]}
+  />
+</BaseLayout>

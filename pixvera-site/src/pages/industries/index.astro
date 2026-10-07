@@ -1,0 +1,70 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import CTABand from '../../components/CTABand.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { seoFor } from '../../data/seo';
+import { industries } from '../../data/industries';
+import { whatsappLink } from '../../data/site';
+
+const seo = seoFor('/industries/');
+const crumbs = [{ name: 'Industries', href: '/industries/' }];
+---
+
+<BaseLayout seo={seo} crumbs={crumbs}>
+  <PageHero
+    h1={seo.h1}
+    crumbs={crumbs}
+    eyebrow="Mumbai · Thane · Navi Mumbai"
+    lead="Every business needs to be found and contacted. Choose your type of business to see how we would approach it."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <ul class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          industries.map((ind, i) => (
+            <li class="reveal" style={`--d:${(i % 3) * 70}ms`}>
+              <a href={`/industries/${ind.slug}/`} class="card flex h-full flex-col">
+                <span class="icon-chip"><Icon name={ind.icon} /></span>
+                <h2 class="mt-4 text-xl">{ind.name}</h2>
+                <p class="mt-2 flex-1 text-ink-soft">{ind.cardText}</p>
+                <span class="mt-4 inline-flex items-center gap-1 font-semibold text-brand-dark">
+                  Digital marketing for {ind.seoName.toLowerCase()} <Icon name="arrow-right" size={18} />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section id="all-industries" class="section bg-white">
+    <div class="wrap">
+      <div class="card reveal mx-auto max-w-3xl bg-brand-tint text-center !p-8 sm:!p-10">
+        <h2 class="text-3xl">Don't see your business? We work with all industries.</h2>
+        <p class="mt-4 text-lg text-ink-soft">
+          The basics are the same for almost every business: be easy to find on Google, look trustworthy, and make it simple for people to contact you. Tell us what you do and we will tell you honestly how we can help.
+        </p>
+        <div class="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+          <a href="/contact/" class="btn btn-primary">Talk to us</a>
+          <a href={whatsappLink('Hi Pixvera, my business is not in your industries list. Can we talk?')} target="_blank" rel="noopener" class="btn btn-wa">
+            <Icon name="whatsapp" size={20} /> WhatsApp us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <RelatedLinks
+    parent={{ href: '/services/', label: 'services' }}
+    items={[
+      { href: '/services/local-seo-mumbai/', title: 'Local SEO services', text: 'Be found on Google Search and Google Maps.' },
+      { href: '/pricing/', title: 'Pricing and plans', text: 'What affects the cost, and what each plan includes.' },
+      { href: '/case-study/', title: 'Case study', text: 'A Mumbai college website, from #3 to #1 on Google.' },
+    ]}
+  />
+  <CTABand />
+</BaseLayout>

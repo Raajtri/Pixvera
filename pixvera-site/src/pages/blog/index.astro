@@ -1,0 +1,56 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import Icon from '../../components/Icon.astro';
+import CTABand from '../../components/CTABand.astro';
+import RelatedLinks from '../../components/RelatedLinks.astro';
+import { seoFor } from '../../data/seo';
+
+const seo = seoFor('/blog/');
+const crumbs = [{ name: 'Blog', href: '/blog/' }];
+const posts = (await getCollection('blog')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = new Intl.DateTimeFormat('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
+---
+
+<BaseLayout seo={seo} crumbs={crumbs}>
+  <PageHero
+    h1={seo.h1}
+    crumbs={crumbs}
+    lead="Plain-language guides on Google, websites and ads for small business owners in Mumbai and across India."
+  />
+
+  <section class="section">
+    <div class="wrap">
+      <ul class="grid gap-5 md:grid-cols-2">
+        {
+          posts.map((p) => (
+            <li class="reveal">
+              <a href={`/blog/${p.id}/`} class="card flex h-full flex-col">
+                <p class="text-sm text-ink-soft">
+                  <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
+                  {p.data.readingMinutes && <> · {p.data.readingMinutes} min read</>}
+                </p>
+                <h2 class="mt-2 text-xl">{p.data.title}</h2>
+                <p class="mt-2 flex-1 text-ink-soft">{p.data.excerpt}</p>
+                <span class="mt-4 inline-flex items-center gap-1 font-semibold text-brand-dark">
+                  Read the guide <Icon name="arrow-right" size={18} />
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <RelatedLinks
+    parent={{ href: '/services/', label: 'services' }}
+    items={[
+      { href: '/services/local-seo-mumbai/', title: 'Local SEO services', text: 'Be found on Google Search and Google Maps.' },
+      { href: '/services/website-development-mumbai/', title: 'Website development', text: 'Fast, mobile-friendly sites with SEO built in.' },
+      { href: '/pricing/', title: 'Pricing', text: 'What affects the cost and what our plans include.' },
+    ]}
+  />
+  <CTABand />
+</BaseLayout>

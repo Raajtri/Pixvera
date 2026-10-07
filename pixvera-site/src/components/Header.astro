@@ -1,0 +1,100 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import { nav, whatsappLink } from '../data/site';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+---
+
+<a
+  href="#main"
+  class="sr-only-focusable fixed left-3 top-3 z-[60] rounded-lg bg-ink px-4 py-2 font-semibold text-white"
+  >Skip to content</a
+>
+<header class="sticky top-0 z-50 border-b border-line bg-paper/95">
+  <div class="wrap flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
+    <a href="/" class="rounded-lg py-1">
+      <Logo />
+    </a>
+
+    <nav aria-label="Main" class="hidden items-center gap-6 lg:flex">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class="py-2 text-[0.95rem] font-semibold text-ink-soft transition-colors hover:text-brand aria-[current=page]:text-brand-dark"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={whatsappLink()}
+        class="btn btn-wa btn-sm"
+        target="_blank"
+        rel="noopener"
+        aria-label="WhatsApp Us"
+      >
+        <Icon name="whatsapp" size={20} />
+        <span class="hidden sm:inline">WhatsApp Us</span>
+      </a>
+      <button
+        type="button"
+        id="menu-toggle"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-line bg-white text-ink lg:hidden"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Open menu"
+      >
+        <span data-open><Icon name="menu" /></span>
+        <span data-close hidden><Icon name="x" /></span>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" hidden class="border-t border-line bg-paper lg:hidden">
+    <nav aria-label="Mobile" class="wrap flex flex-col py-3">
+      {
+        nav.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? 'page' : undefined}
+            class="flex min-h-12 items-center border-b border-line/70 text-lg font-semibold text-ink aria-[current=page]:text-brand-dark"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a href="/contact/" class="btn btn-primary mt-4 mb-2">Get a Free Google Listing Check</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (btn && menu) {
+    const set = (open: boolean) => {
+      menu.hidden = !open;
+      btn.setAttribute('aria-expanded', String(open));
+      btn.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      btn.querySelector<HTMLElement>('[data-open]')!.hidden = open;
+      btn.querySelector<HTMLElement>('[data-close]')!.hidden = !open;
+    };
+    btn.addEventListener('click', () => set(Boolean(menu.hidden)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menu.hidden) {
+        set(false);
+        btn.focus();
+      }
+    });
+    menu.addEventListener('click', (e) => {
+      if ((e.target as HTMLElement).closest('a')) set(false);
+    });
+  }
+</script>

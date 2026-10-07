@@ -16,8 +16,8 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
-      // Utility pages stay out of the sitemap. Area pages only exist once a "live" entry is added.
-      filter: (page) => !/\/(thank-you|404)\/?$/.test(page),
+      // Utility pages (thank-you, 404, privacy, terms) stay out of the sitemap. Area pages only exist once a "live" entry is added.
+      filter: (page) => !/\/(thank-you|404|privacy|terms)\/?$/.test(page),
     }),
   ],
   vite: {

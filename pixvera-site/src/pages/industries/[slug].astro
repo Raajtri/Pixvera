@@ -1,0 +1,11 @@
+---
+import IndustryLayout from '../../layouts/IndustryLayout.astro';
+import { industries } from '../../data/industries';
+
+export function getStaticPaths() {
+  return industries.map((industry) => ({ params: { slug: industry.slug }, props: { industry } }));
+}
+const { industry } = Astro.props;
+---
+
+<IndustryLayout industry={industry} />

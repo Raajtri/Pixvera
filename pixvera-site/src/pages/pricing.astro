@@ -1,0 +1,128 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import PricingCard from '../components/PricingCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import FAQ from '../components/FAQ.astro';
+import CTABand from '../components/CTABand.astro';
+import RelatedLinks from '../components/RelatedLinks.astro';
+import Icon from '../components/Icon.astro';
+import { seoFor } from '../data/seo';
+import { pricing, whatsappLink } from '../data/site';
+import { pricingFaqs } from '../data/faqs';
+
+const seo = seoFor('/pricing/');
+const crumbs = [{ name: 'Pricing', href: '/pricing/' }];
+
+const factors = [
+  {
+    title: 'Website design cost in Mumbai depends on',
+    items: [
+      'The number of pages and how much content needs writing',
+      'How custom the design is, compared with a simple layout',
+      'Extra features such as booking, forms, galleries or a blog',
+      'How fast you need it and how many rounds of changes you want',
+    ],
+  },
+  {
+    title: 'SEO packages in Mumbai depend on',
+    items: [
+      'How competitive your searches are in your area',
+      'The number of services, products or branches to cover',
+      'The current state of your website and Google Business Profile',
+      'How much new content and link-building is needed each month',
+    ],
+  },
+  {
+    title: 'Ads management depends on',
+    items: [
+      'Which platforms you want: Google, Instagram, Facebook or all',
+      'The number of campaigns and the areas you target',
+      'Whether we also guide your photos, videos and offers',
+      'How often you want reports and review calls',
+    ],
+  },
+];
+---
+
+<BaseLayout seo={seo} crumbs={crumbs} faqs={pricingFaqs}>
+  <PageHero
+    h1={seo.h1}
+    crumbs={crumbs}
+    lead="Simple plans for Mumbai businesses. Websites are one-time packages, SEO and ads are monthly plans, and apps are quoted after a free call."
+  >
+    <p class="mt-6 inline-flex max-w-2xl items-start gap-2 rounded-2xl border border-orange-200 bg-orange-50 px-4 py-3 text-[0.95rem]">
+      <Icon name="alert" size={22} class="mt-0.5 flex-none text-accent-dark" />
+      <span><strong>Ad spend, domain name and hosting are paid by you</strong> directly to Google, Meta and your domain or hosting provider. They are not part of our fees.</span>
+    </p>
+  </PageHero>
+
+  <section class="section" id="websites">
+    <div class="wrap">
+      <SectionHeading eyebrow="One-time" title="Website packages" text="A fast, mobile-friendly website with the SEO basics built in." />
+      <ul class="mt-12 grid gap-6 md:grid-cols-3">
+        {pricing.websites.map((p) => <li class="reveal"><PricingCard plan={p} cta="Get this package" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section bg-white" id="monthly">
+    <div class="wrap">
+      <SectionHeading eyebrow="Monthly" title="SEO and ads plans" text="Ongoing work to bring steady enquiries. Month-to-month terms are confirmed in your quote." />
+      <ul class="mt-12 grid gap-6 md:grid-cols-3">
+        {pricing.monthly.map((p) => <li class="reveal"><PricingCard plan={p} cta="Get this plan" /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="apps">
+    <div class="wrap">
+      <div class="card reveal grid items-center gap-6 !p-8 md:grid-cols-[1fr_auto]">
+        <div>
+          <p class="eyebrow mb-2">Custom mobile apps</p>
+          <h2 class="text-3xl">{pricing.app.price}</h2>
+          <p class="mt-3 max-w-xl text-ink-soft">{pricing.app.blurb} <a href="/services/mobile-app-development-mumbai/" class="font-semibold text-brand-dark underline">Learn about our Flutter app service</a>.</p>
+        </div>
+        <a href={whatsappLink('Hi Pixvera, I would like to book a free call about a mobile app.')} target="_blank" rel="noopener" class="btn btn-primary">Book a free call</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section bg-white pt-0 md:pt-0">
+    <div class="wrap">
+      <SectionHeading
+        eyebrow="Why prices differ"
+        title="What changes the price of digital marketing in Mumbai"
+        text="Two businesses can ask for the same thing and need very different amounts of work. These are the main reasons our quotes differ."
+      />
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {
+          factors.map((f) => (
+            <div class="card reveal">
+              <h3 class="text-lg">{f.title}</h3>
+              <ul class="mt-4 space-y-3">
+                {f.items.map((t) => (
+                  <li class="flex gap-2.5 text-[0.95rem]"><Icon name="check" size={20} class="mt-0.5 flex-none text-brand" /><span>{t}</span></li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+      <p class="mt-8 max-w-3xl text-ink-soft">
+        Not sure which plan fits? Start with a <a href="/contact/" class="font-semibold text-brand-dark underline">free Google listing check</a>. We will tell you what is worth doing first, and what can wait. For a plain-language breakdown, read <a href="/blog/how-much-does-a-website-cost-in-mumbai/" class="font-semibold text-brand-dark underline">how much a website costs in Mumbai</a>.
+      </p>
+    </div>
+  </section>
+
+  <FAQ faqs={pricingFaqs} />
+  <RelatedLinks
+    parent={{ href: '/services/', label: 'services' }}
+    items={[
+      { href: '/services/website-development-mumbai/', title: 'Website development', text: 'See what is included in every website we build.' },
+      { href: '/services/local-seo-mumbai/', title: 'Local SEO services', text: 'Be found on Google Search and Google Maps.' },
+      { href: '/blog/how-much-does-a-website-cost-in-mumbai/', title: 'How much does a website cost?', text: 'A clear guide to what affects website prices in Mumbai.' },
+    ]}
+  />
+  <CTABand />
+</BaseLayout>
