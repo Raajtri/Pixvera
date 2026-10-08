@@ -16,12 +16,15 @@ export const site = {
   // Service-area business: no public office address is shown anywhere on the site or in schema.
   serviceAreas: ['Mumbai', 'Thane', 'Navi Mumbai'],
   founders: [
-    { name: 'Aman Tripathi', role: 'Founder', bio: 'At AceGrow: mobile development, web development and digital marketing.', experience: [] as string[] },
+    {
+      name: 'Aman Tripathi',
+      role: 'Founder',
+      bio: 'At AceGrow: mobile development, web development and digital marketing.',
+    },
     {
       name: 'Sushant Tiwari',
       role: 'Co-founder',
       bio: 'At AceGrow: Full Stack Developer and Flutter Developer.',
-      experience: ['Senior Manager, Tiwari Engineering Works (3 years)', 'Previously at TeamLease Edtech Private Limited'],
     },
   ],
   // Digits only, with country code, for wa.me links.
@@ -198,5 +201,5 @@ export const pricing = {
 export const defaultRelated = [
   { href: '/services/', title: 'Our services', text: 'Local SEO, websites, ads and apps for Mumbai businesses.' },
   { href: '/pricing/', title: 'Pricing', text: 'What affects the cost and what our plans include.' },
-  { href: '/case-study/', title: 'Case study', text: 'How a college website went from #3 to #1 on Google.' },
+  { href: '/case-study/', title: 'Case study', text: 'How a college website went from page 3 to page 1 of Google.' },
 ] as const;

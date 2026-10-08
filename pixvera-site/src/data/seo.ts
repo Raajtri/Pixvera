@@ -120,10 +120,10 @@ const pages: PageSeo[] = [
     path: '/case-study/',
     primaryKeyword: 'SEO case study Mumbai college',
     secondaryKeywords: ['rank higher on Google Mumbai', 'college SEO case study', 'Google ranking case study India'],
-    title: 'SEO Case Study: Mumbai College from #3 to #1 on Google',
+    title: 'SEO Case Study: Mumbai College, Page 3 to Page 1 of Google',
     description:
-      'Aman Tripathi took a Mumbai college website from #3 to #1 on Google and cut its load time. See the problems, the fixes and the results.',
-    h1: 'SEO Case Study: A Mumbai College from #3 to #1 on Google',
+      'Aman Tripathi took a Mumbai college website from page 3 to page 1 of Google and cut its load time. See the problems, the fixes and the results.',
+    h1: 'SEO Case Study: A Mumbai College from Page 3 to Page 1 of Google',
   },
   {
     slug: 'about',

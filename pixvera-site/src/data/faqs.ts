@@ -11,7 +11,7 @@ export const homeFaqs = [
   },
   {
     q: 'Can you guarantee a number 1 ranking on Google?',
-    a: 'No, and nobody honestly can. Google decides rankings and they change. We do careful work on the things that are known to matter and show you clear reports. Our founder Aman Tripathi took a Mumbai college website from #3 to #1, but results depend on each business.',
+    a: 'No, and nobody honestly can. Google decides rankings and they change. We do careful work on the things that are known to matter and show you clear reports. Our founder Aman Tripathi took a Mumbai college website from page 3 to page 1 of Google, but results depend on each business.',
   },
   {
     q: 'How much does it cost?',

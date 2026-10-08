@@ -6,6 +6,7 @@ import Icon from '../components/Icon.astro';
 import CTABand from '../components/CTABand.astro';
 import RelatedLinks from '../components/RelatedLinks.astro';
 import { Image } from 'astro:assets';
+import aman from '../assets/founders/aman-tripathi.jpg';
 import sushant from '../assets/founders/sushant-tiwari.jpg';
 import { seoFor } from '../data/seo';
 import { site } from '../data/site';
@@ -13,7 +14,7 @@ import { site } from '../data/site';
 const seo = seoFor('/about/');
 const crumbs = [{ name: 'About', href: '/about/' }];
 // Founder photos by name; founders without an entry show the [PHOTO] placeholder.
-const photos: Record<string, ImageMetadata> = { 'Sushant Tiwari': sushant };
+const photos: Record<string, ImageMetadata> = { 'Aman Tripathi': aman, 'Sushant Tiwari': sushant };
 
 const values = [
   { icon: 'shield', title: 'Honest about results', text: 'We never promise rankings. We show you what we did and what changed.' },
@@ -37,7 +38,7 @@ const values = [
           AceGrow was started in Mumbai by two founders, {site.founders[0].name} and {site.founders[1].name}. [ADD YOUR STORY IN 3-4 SHORT PARAGRAPHS: why you started AceGrow, what you saw small businesses struggling with, and what you want to do differently.]
         </p>
         <p>
-          Before AceGrow, in a first job, Aman Tripathi worked on SEO for a college in Mumbai and fixed a slow, heavily loaded website and took it from the third position on Google to the first for its main searches. You can read what that work involved in our <a href="/case-study/">case study</a>. It is the only result we show, because it is the only one that is ours to show.
+          Before AceGrow, in a first job, Aman Tripathi worked on SEO for a college in Mumbai and fixed a slow, heavily loaded website and took it from page 3 of Google to page 1 for its main searches. You can read what that work involved in our <a href="/case-study/">case study</a>. It is the only result we show, because it is the only one that is ours to show.
         </p>
         <h2>We are new, and we say so</h2>
         <p>
@@ -73,16 +74,6 @@ const values = [
               <div>
                 <h3 class="text-xl">{f.name}</h3>
                 <p class="text-sm font-semibold text-brand-dark">{f.role}, AceGrow</p>
-                {f.experience.length > 0 && (
-                  <ul class="mt-2 space-y-1 text-sm font-medium text-ink">
-                    {f.experience.map((e) => (
-                      <li class="flex gap-2">
-                        <span aria-hidden="true" class="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-brand"></span>
-                        {e}
-                      </li>
-                    ))}
-                  </ul>
-                )}
                 <p class="mt-2 text-sm text-ink-soft">{f.bio}</p>
               </div>
             </div>
@@ -113,7 +104,7 @@ const values = [
     parent={{ href: '/', label: 'home' }}
     items={[
       { href: '/services/', title: 'Our services', text: 'Local SEO, websites, ads and apps for Mumbai businesses.' },
-      { href: '/case-study/', title: 'Case study', text: 'How a college website went from #3 to #1 on Google.' },
+      { href: '/case-study/', title: 'Case study', text: 'How a college website went from page 3 to page 1 of Google.' },
       { href: '/contact/', title: 'Contact us', text: 'Ask for a free Google listing check.' },
     ]}
   />

@@ -76,7 +76,7 @@ const work: { icon: string; title: string; items: string[]; todo?: string }[] = 
 ];
 
 const results: { label: string; before?: string; after?: string; todo?: string }[] = [
-  { label: 'Google rank for its main searches', before: '#3', after: '#1' },
+  { label: 'Google rank for its main searches', before: 'Page 3', after: 'Page 1' },
   { label: 'Home page load time', before: 'About 22 to 27 seconds', after: 'About 7 to 10 seconds' },
   { label: 'Website traffic', before: 'About 30 to 40 visits per month', after: 'About 300 to 400 visits per month' },
   { label: 'Time taken', before: 'Start of the project', after: 'About 3 months later' },
@@ -102,21 +102,21 @@ const results: { label: string; before?: string; after?: string; todo?: string }
       <div class="prose-pix">
         <h2>The situation</h2>
         <p>
-          A college in Mumbai had a website that ranked <strong>third</strong> on Google for its main searches, so two other results appeared above it. The bigger problem was the website itself. It was slow, heavy and poorly organised, and Google was not being told clearly which pages to show.
+          A college in Mumbai had a website that sat on <strong>page 3</strong> of Google for its main searches, so very few people would ever find it. The bigger problem was the website itself. It was slow, heavy and poorly organised, and Google was not being told clearly which pages to show.
         </p>
         <p>
           The website was full of large images and video, and nothing was set to load only when needed. Visitors waited around 22 to 27 seconds for the home page, and most people do not wait that long. Traffic was only about 30 to 40 visits a month.
         </p>
         <h2>The goal</h2>
         <p>
-          Move the college to the first position for the searches that matter most, make the website fast and easy for Google to understand, and bring in more visitors.
+          Move the college from page 3 to page 1 of Google for the searches that matter most, make the website fast and easy for Google to understand, and bring in more visitors.
         </p>
       </div>
       <aside class="card">
         <h2 class="text-lg">At a glance</h2>
         <dl class="mt-4 space-y-3 text-[0.95rem]">
           <div><dt class="font-semibold text-ink-soft">Type of client</dt><dd>A college in Mumbai (name not shared, see below)</dd></div>
-          <div><dt class="font-semibold text-ink-soft">Result for main searches</dt><dd>From #3 to #1 on Google</dd></div>
+          <div><dt class="font-semibold text-ink-soft">Result for main searches</dt><dd>From page 3 to page 1 of Google</dd></div>
           <div><dt class="font-semibold text-ink-soft">Work done by</dt><dd>Aman Tripathi, in a first job</dd></div>
           <div><dt class="font-semibold text-ink-soft">Tools used</dt><dd>Semrush and similar keyword tools, Google Analytics</dd></div>
         </dl>
@@ -164,7 +164,7 @@ const results: { label: string; before?: string; after?: string; todo?: string }
 
   <section class="section bg-white">
     <div class="wrap">
-      <SectionHeading eyebrow="Results" title="From #3 to #1 on Google" text="These numbers come from Aman's own account of the project." />
+      <SectionHeading eyebrow="Results" title="From page 3 to page 1 of Google" text="These numbers come from Aman's own account of the project." />
       <div class="mt-10 grid items-start gap-10 lg:grid-cols-[0.8fr_1.2fr]">
         <div class="card reveal !p-8">
           <RankGraphic />

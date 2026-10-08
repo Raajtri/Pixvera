@@ -1,16 +1,16 @@
 ---
-/** Before/after rank graphic for the case study. The #3 to #1 jump is the founder's stated result (Aman Tripathi). */
+/** Before/after rank graphic for the case study. The page 3 to page 1 jump is the founder's stated result (Aman Tripathi). */
 interface Props {
   compact?: boolean;
 }
 const { compact = false } = Astro.props;
 ---
 
-<figure class="mx-auto w-full max-w-md" role="group" aria-label="Google ranking moved from number 3 to number 1">
+<figure class="mx-auto w-full max-w-md" role="group" aria-label="Google ranking moved from page 3 to page 1">
   <div class="grid grid-cols-[1fr_auto_1fr] items-center gap-3 sm:gap-5">
     <div class="rounded-2xl border border-line bg-white p-4 text-center shadow-soft sm:p-6">
       <p class="text-xs font-bold uppercase tracking-widest text-ink-soft">Before</p>
-      <p class="font-heading text-5xl font-extrabold text-ink-soft sm:text-6xl">#3</p>
+      <p class="font-heading text-3xl font-extrabold text-ink-soft sm:text-4xl">Page 3</p>
       <p class="text-xs text-ink-soft">on Google</p>
     </div>
     <svg viewBox="0 0 48 24" width="44" height="22" aria-hidden="true" class="text-accent">
@@ -18,7 +18,7 @@ const { compact = false } = Astro.props;
     </svg>
     <div class="rounded-2xl border-2 border-brand bg-white p-4 text-center shadow-lift sm:p-6">
       <p class="text-xs font-bold uppercase tracking-widest text-brand-dark">After</p>
-      <p class="font-heading text-5xl font-extrabold text-brand sm:text-6xl">#1</p>
+      <p class="font-heading text-3xl font-extrabold text-brand sm:text-4xl">Page 1</p>
       <p class="text-xs text-ink-soft">on Google</p>
     </div>
   </div>
