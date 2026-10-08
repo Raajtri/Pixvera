@@ -16,8 +16,13 @@ export const site = {
   // Service-area business: no public office address is shown anywhere on the site or in schema.
   serviceAreas: ['Mumbai', 'Thane', 'Navi Mumbai'],
   founders: [
-    { name: 'Aman Tripathi', role: 'Co-founder', bio: '[ADD 2-3 SENTENCES ABOUT AMAN: background, what they handle at AceGrow]' },
-    { name: 'Sushant Tiwari', role: 'Co-founder', bio: '[ADD 2-3 SENTENCES ABOUT SUSHANT: background, what they handle at AceGrow]' },
+    { name: 'Aman Tripathi', role: 'Founder', bio: 'At AceGrow: mobile development, web development and digital marketing.', experience: [] as string[] },
+    {
+      name: 'Sushant Tiwari',
+      role: 'Co-founder',
+      bio: 'At AceGrow: Full Stack Developer and Flutter Developer.',
+      experience: ['Senior Manager, Tiwari Engineering Works (3 years)', 'Previously at TeamLease Edtech Private Limited'],
+    },
   ],
   // Digits only, with country code, for wa.me links.
   whatsappNumber: '918303026772',

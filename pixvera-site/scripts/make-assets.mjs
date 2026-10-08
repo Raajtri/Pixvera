@@ -1,4 +1,4 @@
-// Generates the placeholder raster images (social share image, apple-touch icon, screenshot slot).
+// Generates the placeholder raster images (social share image, screenshot slot).
 // Run with: npm run assets. Replace the outputs with your real artwork whenever you like.
 import sharp from 'sharp';
 import { mkdirSync } from 'node:fs';
@@ -34,13 +34,6 @@ ${icon(80, 90, 110)}
 </svg>`;
 await sharp(Buffer.from(og)).png({ compressionLevel: 9 }).toFile('public/og-default.png');
 
-// 180x180 apple-touch-icon
-const touch = `<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
-<rect width="180" height="180" fill="#FAFAFC"/>
-${icon(30, 30, 120).replace('#A5B4FC', '#312E81')}
-</svg>`;
-await sharp(Buffer.from(touch)).png().toFile('public/apple-touch-icon.png');
-
 // Screenshot placeholder slot (1200x750), used through astro:assets
 const shot = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
 <rect width="1200" height="750" fill="#EEF2FF"/>
@@ -52,4 +45,4 @@ ${grid(1200, 750, 40, 'rgba(79,70,229,0.10)')}
 </svg>`;
 await sharp(Buffer.from(shot)).png({ compressionLevel: 9 }).toFile('src/assets/screenshot-placeholder.png');
 
-console.log('Generated: public/og-default.png, public/apple-touch-icon.png, src/assets/screenshot-placeholder.png');
+console.log('Generated: public/og-default.png, src/assets/screenshot-placeholder.png');

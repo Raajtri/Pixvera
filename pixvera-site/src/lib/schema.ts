@@ -23,7 +23,7 @@ export const baseGraph = () => [
     name: site.name,
     alternateName: `${site.name} ${site.descriptor}`,
     url: site.url + '/',
-    logo: absoluteUrl('/apple-touch-icon.png'),
+    logo: absoluteUrl('/logo.png'),
     description: site.tagline,
     ...(sameAs.length && { sameAs }),
     ...(email && { email }),

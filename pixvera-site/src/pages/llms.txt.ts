@@ -14,7 +14,7 @@ export const GET: APIRoute = async () => {
     '',
     `> ${site.name} is a ${site.descriptor.toLowerCase()} in ${site.location}. ${site.tagline} We serve businesses across ${site.serviceAreas.join(', ')}.`,
     '',
-    `${site.name} is a new studio. The only past result we show is one case study from co-founder Aman Tripathi's first job: a Mumbai college website taken from #3 to #1 on Google for its main searches, with faster load times and more traffic. We do not publish client lists, reviews or guaranteed results.`,
+    `${site.name} is a new studio. The only past result we show is one case study from founder Aman Tripathi's first job: a Mumbai college website taken from #3 to #1 on Google for its main searches, with faster load times and more traffic. We do not publish client lists, reviews or guaranteed results.`,
     '',
     '## Services',
     ...services.map((s) => `- [${s.name}](${absoluteUrl(`/services/${s.slug}/`)}): ${s.short}`),

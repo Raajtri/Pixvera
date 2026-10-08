@@ -16,7 +16,7 @@ npm run dev              # http://localhost:4321
 npm run build            # builds to /dist, then runs scripts/validate-seo.mjs
 npm run preview          # serve the built site locally
 npm run lighthouse       # mobile Lighthouse on key pages (needs Chrome installed; run build first)
-npm run assets           # regenerates the placeholder og-default.png / apple-touch-icon.png
+npm run assets           # regenerates the placeholder og-default.png / screenshot slot
 ```
 
 `npm run build` fails if any page has a title over 60 characters, a description over 155, a duplicate title or description, more or fewer than one H1, a missing canonical, a direct answer outside 40-60 words, fewer than 4 FAQs, missing breadcrumbs or related links, a broken internal link, a blog post under 800 words, or a sitemap mismatch.
