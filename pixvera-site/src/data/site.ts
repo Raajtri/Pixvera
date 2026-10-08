@@ -23,7 +23,7 @@ export const site = {
     },
     {
       name: 'Sushant Tiwari',
-      role: 'Co-founder',
+      role: 'Founder',
       bio: 'At AceGrow: Full Stack Developer and Flutter Developer.',
     },
   ],
